@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import Login from './login';
 ReactDOM.render(
   <React.StrictMode>
-    <Login/>
+    <App/>
   </React.StrictMode>,
 
   document.getElementById('root')
