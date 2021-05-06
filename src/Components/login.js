@@ -5,7 +5,7 @@ import {
     useHistory
 } from "react-router-dom";
 import PrivateRoute from './PrivateRoute';
-import Perfil from './Perfil';
+import Perfil from './perfil';
 
 function Login() {
     const history = useHistory();

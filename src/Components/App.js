@@ -7,7 +7,7 @@ import {
     BrowserRouter,
     Redirect
 } from "react-router-dom";
-import Perfil from './Perfil';
+import Perfil from './perfil';
 import Login from './login';
 import PrivateRoute from './PrivateRoute';
 
