@@ -1,0 +1,128 @@
+
+.perfil {
+  
+}
+
+/*----------------------------------------------------*/
+
+#usu_header,#gmail_header,#monster_header{
+  margin-left: 4%;
+}
+/*----------------------------------------------------*/
+#submenu{
+  margin-top: 10%;
+  left:25%;
+  position:relative;
+  background-color: black;
+  color:white;  
+  width: 50%;
+  height: 3%;
+  border:2px white solid;
+  margin-bottom: 2%;
+}
+#boton_menu{
+  margin-top: 2%;
+  margin-right: 2%;
+  margin-left: 2%;
+}
+.boton{
+  margin-left: 4%;
+}
+.header{
+  background-color: purple;
+  color:white;
+  height: 5%;
+}
+#texto_header{
+  position: relative;
+  top:25%;
+}
+#perfil{
+  position:relative;
+}
+.perfil{
+  width:720px;
+  height: 1080px;
+  background-image: url("imgs/fondo.jpg");
+}
+.row_inv{
+  width: 100%;
+  margin-left: 0%  !important;
+  height: 70px;
+}
+
+.celda{
+  border: white 2px solid;
+}
+#contenido_inv{
+  width: 100%;
+}
+#inventario{
+  left: 25%;
+  text-align: center;
+  border: black 5px solid;
+  background: rgb(198,198,198,0.5); ;
+  position:relative;
+  width: 50%;
+  height: 30%;
+  color: white;
+  font-style: normal;
+}
+#title_invent{
+  border: white 2px solid;
+}
+#contenido_inv{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 100px;
+  grid-gap: 20px;
+}
+.container{
+  width: 100%;
+  height: 100%;
+}
+#log_title{
+  color: white;
+}
+#titulo{
+  color:white;
+  margin-left: 20%;
+  font-size: 200%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#Stats{
+  text-align: center;
+  left: 25%;
+  margin-top: 10%;
+  border: white 5px solid;
+  background: rgb(0,0,0,0.8); ;
+  position:relative;
+  width: 50%;
+  height: 30%;
+  color: white;
+  font-style: normal;
+}
+#img_prueba{
+  position: relative;
+  margin-left: 5% !important;
+  width: 180px;
+  height: 180px;
+  background-color: white;
+}
+#stats_img{
+  margin-left: 4%;
+  background-color: rgb(0,0,0,0.8); ;;
+  width: 130px;
+  height: 120px;
+}
+#desc{
+  border:1px white solid;
+  background: rgb(198,198,198,0.5); ;
+  padding-left: 2%;
+  font-size: 60%;
+  text-align: center;
+}
+#nivel_puntos{
+  margin-top: 2%;
+  margin-left: 5%;
+}
