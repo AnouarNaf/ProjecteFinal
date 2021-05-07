@@ -5,8 +5,10 @@ class Monstruos extends React.Component{
     state = {
         dataSelection: []
     }
-    componentDidMount(){
+    async componentDidMount(){
         Axios.post("http://localhost:3001/api/GetMonstruos", { usuario: JSON.parse(sessionStorage.getItem("Usuari")).usuari }).then((res) => this.setState({data:res.data.rows}));
+        var x = await Axios.post("http://localhost:3001/api/GetImgMonstruos", { usuario: JSON.parse(sessionStorage.getItem("Usuari")).usuari });
+        console.log(x);
     }
     render(){
         return(
