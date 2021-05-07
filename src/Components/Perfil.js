@@ -1,7 +1,8 @@
-import React, {  useEffect} from 'react';
+import React, { useEffect } from 'react';
 import '../Styles/profile.css';
 import Axios from "axios";
 import { Container, Row, Col } from 'react-grid-system';
+import Monstruos from './Monstruos';
 
 
 function Perfil() {
@@ -33,8 +34,6 @@ function Perfil() {
 
     const [Prueba, setPrueba] = React.useState(null);
 
-    Axios.post("http://localhost:3001/api/GetMonstruos", { usuario: JSON.parse(sessionStorage.getItem("Usuari")).usuari}).then((res) => setPrueba(res.data.rows));
-
     /* const [Usuario, setDataC] = React.useState(null);*/
 
 
@@ -58,7 +57,7 @@ function Perfil() {
 
 
     return (
-        <div className="perfil" >
+        <div className="perfil" >            
             <div className="header">
                 <div id="texto_header">
                     <b id="usu_header">{usuario_nombre}</b>
@@ -171,17 +170,11 @@ function Perfil() {
                             </div>
                         </Row>
                     </Container>
-                </div>                
+                </div>
             </div>
             <div id="invisible_box">
-
             </div>
-            {!Prueba ? "Loading...":
-                    Prueba.map(x => {
-                        return(<p>{x.idMonstruo}</p>)
-                        // console.log(x.idMonstruo);
-                    })
-                }
+            <Monstruos />
         </div>
     );
 }
