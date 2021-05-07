@@ -4,8 +4,6 @@ import Axios from "axios";
 import {
     useHistory
 } from "react-router-dom";
-import PrivateRoute from './PrivateRoute';
-import Perfil from './perfil';
 
 function Login() {
     const history = useHistory();
