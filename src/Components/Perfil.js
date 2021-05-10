@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import '../Styles/profile.css';
 import Axios from "axios";
 import { Container, Row, Col } from 'react-grid-system';
-import Monstruos from './Monstruos';
+import Inventario from './inventario';
 
 
 function Perfil() {
@@ -74,107 +74,11 @@ function Perfil() {
                     <b className="boton"></b>
                 </div>
             </div>
-            <div className="container">
-                <div id="inventario" >
-                    <div id="title_invent">
-                        <b> {N_inventario}</b>
-                    </div>
-                    <Container className="cont_inv">
-                        <Row className="row_inv">
-                            <Col className="celda" sm={4}>
+            <Inventario />
 
-                            </Col>
-                            <Col className="celda" sm={4}>
-
-                            </Col>
-                            <Col className="celda" sm={4}>
-                                hola
-                            </Col>
-                        </Row>
-                        <Row className="row_inv">
-                            <Col className="celda" sm={4}>
-                                hola
-                            </Col>
-                            <Col className="celda" sm={4}>
-                                hola
-                            </Col>
-                            <Col className="celda" sm={4}>
-                                hola
-                            </Col>
-                        </Row>
-                        <Row className="row_inv">
-                            <Col className="celda" sm={4}>
-                                hola
-                            </Col>
-                            <Col className="celda" sm={4}>
-                                hola
-                            </Col>
-                            <Col className="celda" sm={4}>
-                                hola
-                            </Col>
-                        </Row>
-                        <Row className="row_inv">
-                            <Col className="celda" sm={4}>
-                                hola
-                            </Col>
-                            <Col className="celda" sm={4}>
-                                hola
-                            </Col>
-                            <Col className="celda" sm={4}>
-                                hola
-                            </Col>
-                        </Row>
-                    </Container>
-                </div>
-                <div id="Stats" >
-                    <Container>
-                        <Row>
-                            Inventario
-                    </Row>
-                        <Row>
-                            Nombre_criatura
-                    </Row>
-                        <Row>
-                            <div id="img_prueba"> Imagen_prueba </div>
-                            <div id="stats_img" >
-                                <Container>
-                                    <Row id="desc">
-                                        Monstruo de grandes garras
-                               </Row>
-                                    <Row>
-                                        Vida:
-                               </Row>
-                                    <Row>
-                                        Fuerza:
-                               </Row>
-                                    <Row>
-                                        Armadura:
-                               </Row>
-                                    <Row>
-                                        Esquiva:
-                               </Row>
-                                </Container>
-                            </div>
-                        </Row>
-                        <Row>
-                            <div id="nivel_puntos">
-                                <Container>
-                                    <Row>
-                                        Nivel:
-                                </Row>
-                                    <Row>
-                                        Puntos:
-                                </Row>
-                                </Container>
-
-                            </div>
-                        </Row>
-                    </Container>
-                </div>
-            </div>
             <div id="invisible_box">
             </div>
-            <Monstruos />
+
         </div>
     );
 }
