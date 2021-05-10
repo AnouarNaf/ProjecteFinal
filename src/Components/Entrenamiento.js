@@ -1,7 +1,8 @@
 import react from "react";
 import { Container, Row, Col } from 'react-grid-system';
 import Button from 'react-bootstrap/Button';
-import '../Styles/entrenamiento.css';
+import '../Styles/Entrenamiento.css';
+import axios from "axios";
 
 export default class Entrenamiento extends react.Component {
     constructor(props) {
@@ -11,6 +12,11 @@ export default class Entrenamiento extends react.Component {
             isDisabled : true
         }
         this.cambiar = this.cambiar.bind(this);
+    }
+    async componentDidMount() {
+        axios.post("http://localhost:3001/api/GetImgMonstruos", {usuario : JSON.parse(sessionStorage.getItem("Usuari")).usuari }).then((res)=>this.setState({
+            imagenes : res.data.rows
+        }))
     }
     
     cambiar() {
@@ -48,49 +54,16 @@ export default class Entrenamiento extends react.Component {
                     <div id="Stats" >
                         <Container className="cont_inv">  
                             <Row className="row_inv">
-                                <Col className="celda" sm={4} onClick={this.cambiar}>
-                                </Col>
-                                <Col className="celda" sm={4} onClick={this.cambiar}>
-                                    hola
-                                </Col>
-                                <Col className="celda" sm={4} onClick={this.cambiar}>
-                                    hola
-                                </Col>                
+                                { !this.state.imagenes ? "" : this.state.imagenes.map((x,i) =>{
+                                    return(
+                                        <Col className="celda" sm={4} onClick={this.cambiar}>
+                                            <img src={x.img} className="imatges"></img>
+                                        </Col>    
+                                    )
+                                })}
                             </Row>
-                            <Row className="row_inv">
-                                <Col className="celda" sm={4} onClick={this.cambiar}>
-                                    hola
-                                </Col>
-                                <Col className="celda" sm={4} onClick={this.cambiar}>
-                                    hola
-                                </Col>
-                                <Col className="celda" sm={4} onClick={this.cambiar}>
-                                    hola
-                                </Col>                
-                            </Row>
-                            <Row className="row_inv">
-                                <Col className="celda" sm={4} onClick={this.cambiar}>
-                                    hola
-                                </Col>
-                                <Col className="celda" sm={4} onClick={this.cambiar}>
-                                    hola
-                                </Col>
-                                <Col className="celda" sm={4} onClick={this.cambiar}>
-                                    hola
-                                </Col>                
-                            </Row>
-                            <Row className="row_inv">
-                                <Col className="celda" sm={4} onClick={this.cambiar}>
-                                    hola
-                                </Col>
-                                <Col className="celda" sm={4} onClick={this.cambiar}>
-                                    hola
-                                </Col>
-                                <Col className="celda" sm={4} onClick={this.cambiar}>
-                                    hola
-                                </Col>                
-                            </Row>
-                        </Container>   
+                        </Container> 
+                          
                     </div>
                 </div>
                 <div id="invisible_box">

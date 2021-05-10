@@ -3,7 +3,7 @@ import '../Styles/profile.css';
 import Axios from "axios";
 import { Container, Row, Col } from 'react-grid-system';
 import Inventario from './inventario';
-
+import { Link } from 'react-router-dom';
 
 function Perfil() {
     //------------Functions..................//
@@ -70,7 +70,10 @@ function Perfil() {
                 <div id="boton_menu">
                     <b className="boton">Perfil</b>
                     <b className="boton">Pvp</b>
-                    <b className="boton">Entrenamiento</b>
+                    <b className="boton"> 
+                        <Link to="/Entrenamiento">Entrenamiento</Link>
+                    </b>
+                    
                     <b className="boton"></b>
                 </div>
             </div>

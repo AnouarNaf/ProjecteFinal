@@ -10,6 +10,7 @@ import {
 import Perfil from './Perfil';
 import Login from './login';
 import PrivateRoute from './PrivateRoute';
+import Entrenamiento from './Entrenamiento';
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                 <Switch>
                     <Route path="/login" component={ Login }/>
                     <PrivateRoute exact path="/perfil" component={ Perfil }/>
+                    <PrivateRoute exact path="/Entrenamiento" component={ Entrenamiento }/>
                     <Redirect to="/login"/>
                 </Switch>
             </div>
