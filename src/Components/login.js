@@ -1,9 +1,7 @@
 import React, { useState} from 'react';
 import '../Styles/login.css';
 import Axios from "axios";
-import {
-    useHistory
-} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function Login() {
     const history = useHistory();
@@ -47,8 +45,7 @@ function Login() {
             history.push("/perfil");
         }
         else {
-            alert(res);
-            sessionStorage.clear();
+            alert(res);            
         }
     }
 
