@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-grid-system';
 import Button from 'react-bootstrap/Button';
 import '../Styles/Entrenamiento.css';
 import axios from "axios";
+import Menu from './Menu';
 
 export default class Entrenamiento extends react.Component {
     constructor(props) {
@@ -37,14 +38,7 @@ export default class Entrenamiento extends react.Component {
                         <b id="titulo">Bestiario</b>            
                     </div>                       
                 </div>
-                <div id="submenu">
-                    <div id="boton_menu">
-                        <b className="boton">Perfil</b>
-                        <b className="boton">Pvp</b>
-                        <b className="boton" onClick="entrenamiento()">Entrenamiento</b>
-                        <b className="boton"></b>
-                    </div>
-                </div>
+                <Menu />
                 <div className="container">         
                     <div id="inventario" >
 

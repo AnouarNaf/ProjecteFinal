@@ -3,7 +3,7 @@ import '../Styles/profile.css';
 import Axios from "axios";
 import { Container, Row, Col } from 'react-grid-system';
 import Inventario from './inventario';
-import { Link } from 'react-router-dom';
+import Menu from './Menu';
 
 function Perfil() {
     //------------Functions..................//
@@ -66,17 +66,7 @@ function Perfil() {
                     <b id="titulo">Bestiario</b>
                 </div>
             </div>
-            <div id="submenu">
-                <div id="boton_menu">
-                    <b className="boton">Perfil</b>
-                    <b className="boton">Pvp</b>
-                    <b className="boton"> 
-                        <Link to="/Entrenamiento">Entrenamiento</Link>
-                    </b>
-                    
-                    <b className="boton"></b>
-                </div>
-            </div>
+            <Menu />
             <Inventario />
 
             <div id="invisible_box">
