@@ -36,9 +36,9 @@ class Inventario extends React.Component{
                 <Container className="cont_inv">
                     <Row className="row_inv">
                     {!this.state.imagenes ? "Cargando" :this.state.imagenes.map((x,i) =>{
-                            return(<Col onClick={() => this.sleeccion_m(x.idMonstre)} className="celda"> <img width="60px" height="60px" id="imgs_celdas"
+                            return(<Col onClick={() => this.sleeccion_m(x.idMonstre)} className="celda" key={i}> <img width="60px" height="60px" id="imgs_celdas"
                     src={x.img}
-                        /> </Col>)
+                        /></Col>)
                     })
                     }   
                     </Row>
