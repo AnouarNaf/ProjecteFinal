@@ -2,6 +2,7 @@ import React from 'react';
 import '../Styles/profile.css';
 import Inventario from './inventario';
 import Menu from './Menu';
+import Header from './Header';
 
 function Perfil() {
 
@@ -10,8 +11,8 @@ function Perfil() {
 
     //-----------Usuario_info--------------//
     // var idusuario = "";
-    const [correo, setcorreo] = React.useState(null);
-    const usuario_nombre = JSON.parse(sessionStorage.getItem("Usuari")).usuari;
+    // const [correo, setcorreo] = React.useState(null);
+    // const usuario_nombre = JSON.parse(sessionStorage.getItem("Usuari")).usuari;
 
     /* const [Usuario, setDataC] = React.useState(null);*/
 
@@ -36,21 +37,10 @@ function Perfil() {
 
 
     return (
-        <div className="perfil" >            
-            <div className="header">
-                <div id="texto_header">
-                    <b id="usu_header">{usuario_nombre}</b>
-                    <b id="gmail_header">{correo}</b>
-                    <b id="monster_header">Monstruos</b>
-                    <b id="titulo">Bestiario</b>
-                </div>
-            </div>
+        <div className="perfil" > 
+            <Header />
             <Menu />
             <Inventario />
-
-            <div id="invisible_box">
-            </div>
-
         </div>
     );
 }
