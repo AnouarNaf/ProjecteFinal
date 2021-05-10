@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import '../Styles/login.css';
 import Axios from "axios";
 import {
@@ -8,7 +8,7 @@ import {
 function Login() {
     const history = useHistory();
     //-----------Login--------------//
-    const [dataC, setDataC] = React.useState(null);
+    // const [dataC, setDataC] = React.useState(null);
     const [usu, setusuario] = useState("");
     const [cont, setcontraseña] = useState("");
     //--------------Registro-----------//
@@ -30,7 +30,7 @@ function Login() {
 
     function registro(x, user, password, email) {
         console.log(x);
-        if (x == "false") {
+        if (x === "false") {
             alert("el usuario es correcto");
             Axios.post("http://localhost:3001/api/InsertarUsuario", { usuario: user, contraseña: password, gmail: email }).then((res) => alert(res.data.mensaje))
         } else {
@@ -39,7 +39,7 @@ function Login() {
     }
     
     function RespuestaLogin(res, usuari) {
-        if (res == "True") {
+        if (res === "True") {
             sessionStorage.setItem("Usuari", JSON.stringify({
                 usuari,
                 logged: true

@@ -51,7 +51,7 @@ export default class Entrenamiento extends react.Component {
                                 { !this.state.imagenes ? "" : this.state.imagenes.map((x,i) =>{
                                     return(
                                         <Col className="celda" sm={4} onClick={this.cambiar} key={i}>
-                                            <img src={x.img} className="imatges"></img>
+                                            <img src={x.img} className="imatges" alt="imatgeMonstre"></img>
                                         </Col>    
                                     )
                                 })}

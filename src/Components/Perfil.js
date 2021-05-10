@@ -1,24 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import '../Styles/profile.css';
-import Axios from "axios";
-import { Container, Row, Col } from 'react-grid-system';
 import Inventario from './inventario';
 import Menu from './Menu';
 
 function Perfil() {
-    //------------Functions..................//
-    // function identificarusu(x) {
-    //     console.log(x[2].idUsuario)
-    //     for (var i = 0; i < x.length; i++) {
-    //         if (x[i].usuario === usuario_nombre) {
-    //             console.log(x[i].idUsuario);
-    //             idusuario = x[i].idUsuario;
-    //             setcorreo(x[i].gmail);
-    //             console.log(correo);
-    //             break;
-    //         }
-    //     }
-    // }
 
 
     //----------------------------------------//
@@ -27,12 +12,6 @@ function Perfil() {
     // var idusuario = "";
     const [correo, setcorreo] = React.useState(null);
     const usuario_nombre = JSON.parse(sessionStorage.getItem("Usuari")).usuari;
-    const [usuarios, setusu] = React.useState(null);
-    const [UsuId, SetId] = React.useState(null);
-
-    const [N_inventario, setInv] = React.useState(null);
-
-    const [Prueba, setPrueba] = React.useState(null);
 
     /* const [Usuario, setDataC] = React.useState(null);*/
 
