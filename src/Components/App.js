@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import '../Styles/App.css';
 import {
     BrowserRouter as Router,
@@ -7,7 +7,7 @@ import {
     BrowserRouter,
     Redirect
 } from "react-router-dom";
-import Perfil from './perfil';
+import Perfil from './Perfil';
 import Login from './login';
 import PrivateRoute from './PrivateRoute';
 
