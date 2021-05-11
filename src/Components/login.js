@@ -4,7 +4,7 @@ import Axios from "axios";
 import {
     useHistory
 } from "react-router-dom";
-
+import cadenas from '../imgs/Login/cadenas.png';
 function Login() {
     const history = useHistory();
     //-----------Login--------------//
@@ -54,30 +54,33 @@ function Login() {
 
     return (
             <div className="App" >
-                <div className="container">
-                    <div id="titulo" className="row"><h1>Bestiario</h1></div>
+                <div id="titulo" className="row"><h1>Bestiario</h1></div>
+                <div className="container">                 
                     <div id="row_log" >
                         <div id="login" >
                             <div id="log_title" className="row"><h3>Log In</h3></div>
                             <div className="row"><label>User</label></div>
-                            <div className="row"><input onChange={(e) => { setusuario(e.target.value); }} type="text" placeholde="data" name="user" /></div>
+                            <div className="row input"><input id="inptxt" onChange={(e) => { setusuario(e.target.value); }} type="text" placeholde="data" name="user" /></div>
                             <div className="row"><label>Password</label></div>
-                            <div className="row"><input onChange={(e) => { setcontraseña(e.target.value); }} type="password" name="pass" /><br></br></div>
+                            <div className="row input"><input id="inptxt" onChange={(e) => { setcontraseña(e.target.value); }} type="password" name="pass" /><br></br></div>
                             <button onClick={login}>Entrar</button>
                         </div>
                     </div>
+                    <img id="cadena_isq" src={cadenas}/>
+                    <img id="cadena_de" src={cadenas}/>
                     <div id="row_reg" >
                         <div id="Register" >
                             <div id="log_title" className="row"><h3>Register</h3></div>
                             <div className="row"><label>User</label></div>
-                            <div className="row"><input onChange={(e) => { setusuarioreg(e.target.value); }} type="text" placeholde="data" name="user" /></div>
+                            <div className="row input"><input id="inptxt" onChange={(e) => { setusuarioreg(e.target.value); }} type="text" placeholde="data" name="user" /></div>
                             <div className="row"><label >Password</label></div>
-                            <div className="row"><input onChange={(e) => { setcontraseñareg(e.target.value); }} type="password" name="pass" /><br></br></div>
+                            <div className="row input"><input id="inptxt" onChange={(e) => { setcontraseñareg(e.target.value); }} type="password" name="pass" /><br></br></div>
                             <div className="row"><label>Gmail</label></div>
-                            <div className="row"><input onChange={(e) => { setgmailreg(e.target.value); }} type="text" name="pass" /><br></br></div>
-                            <div className="row"><button onClick={register}>Entrar</button></div>
+                            <div className="row input"><input  id="inptxt" onChange={(e) => { setgmailreg(e.target.value); }} type="text" name="pass" /><br></br></div>
+                            
                         </div>
                     </div>
+                    <div className="row"><button onClick={register}>Entrar</button></div>
                 </div>
                 <div id="invisible_box">
                 </div>
