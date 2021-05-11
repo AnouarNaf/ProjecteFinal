@@ -32,7 +32,7 @@
     z-index: 0;
     position: relative;
     left: 4%;
-    background: rgb(255, 255, 255);
+    /*background: rgb(255, 255, 255);*/
     background: radial-gradient(circle, rgba(255, 255, 255, 0.5886555305716037) 0%, rgba(223, 223, 223, 0.5242297602634804) 49%, rgba(0, 0, 0, 0.42619054457720584) 100%);
 }
 
@@ -42,13 +42,21 @@
     z-index: 0;
     position: relative;
     left: 58%;
-    background: rgb(255, 255, 255);
+    /*background: rgb(255, 255, 255);*/
     background: radial-gradient(circle, rgba(255, 255, 255, 0.5886555305716037) 0%, rgba(223, 223, 223, 0.5242297602634804) 49%, rgba(0, 0, 0, 0.42619054457720584) 100%);
 }
 
 /*             */
 #login{
-
+  width: 100%;
+  height: 100%;
+    padding-top: 5%;
+    position:relative;
+  }
+  #Register{
+    width: 100%;
+    height: 100%;
+    padding-top: 1%;
     position:relative;
   }
   .App{
@@ -57,15 +65,41 @@
     background-image: url("../imgs/fondo.jpg");
   }
   #row_log{
-    left: 25%;
-  
-    border: white 5px solid;
-    background: rgb(0,0,0,0.5); ;
+    left: 22%;
+    background-image: url(../imgs/Login/Login_Tablero.png);
+    background-size: cover;
     position:relative;
-    width: 50%;
+    width: 56%;
     height: 30%;
     color: white;
     font-style: normal;
+  }
+  #cadena_isq{
+    position: relative;
+    z-index: 2;
+    right: 20%;
+    bottom:2%;
+  }
+  #cadena_de{
+    position: relative;
+    z-index: 2;
+    left: 20%;
+    bottom:2%;
+  }
+  .input{
+    background-image: url("../imgs/Login/inputs.png");
+    background-repeat: no-repeat;
+    background-size: auto;
+    height: 15%;
+    text-align: left;
+    padding-top: 3%;
+    position: relative;
+    margin-left: 30%;
+    padding-left: 2%;
+    padding-right: 25%;
+  }
+  #inptxt{
+    width: 150px;
   }
   .container{
     width: 100%;
@@ -81,12 +115,12 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
   #row_reg{
-    left: 25%;
-    margin-top: 10%;
-    border: white 5px solid;
-    background: rgb(0,0,0,0.5); ;
+    left: 22%;
+    bottom:5%;
+    background-image: url(../imgs/Login/Login_Tablero.png);
+    background-size: cover;
     position:relative;
-    width: 50%;
+    width: 56%;
     height: 30%;
     color: white;
     font-style: normal;
