@@ -9,6 +9,9 @@ import cadenas from '../imgs/Login/cadenas.png';
 import cadenas2 from '../imgs/Login/cadena_2.png';
 import boton from '../imgs/Login/boton.png';
 import titulo from '../imgs/Login/titulo.png';
+import useKeypress from 'react-use-keypress';
+
+
 function Login() {
     const history = useHistory();
     //-----------Login--------------//
@@ -19,6 +22,7 @@ function Login() {
     const [reg_usuario, setusuarioreg] = useState("");
     const [reg_contraseña, setcontraseñareg] = useState("");
     const [reg_gmail, setgmailreg] = useState("");
+
     const login = () => {
         // console.log("CLICK");
         Axios.post("http://localhost:3001/api/validarUsuario", { usuario: usu, contraseña: cont }).then((res) => RespuestaLogin(res.data.mensaje, usu))
@@ -60,6 +64,11 @@ function Login() {
             alert(res);
         }
     }
+
+    const Key = useKeypress('Enter', () => {
+        // Do something when the user has pressed the Escape key
+        login();
+      });
 
     return (<div id="todo">
         <div className="clouds"></div>
