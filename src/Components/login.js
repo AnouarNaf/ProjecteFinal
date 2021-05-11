@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import '../Styles/login.css';
 import Axios from "axios";
 
@@ -27,11 +27,11 @@ function Login() {
     const register = () => {
 
         const user_without_spaces = reg_usuario.replace(/\s/g, '');
-        if(user_without_spaces.length !== reg_usuario.length)return alert("L'usuari no pot tenir espais")
-        if(reg_usuario.length === 0)return alert("Has d'introduir un valor de usuari")
-        if(reg_usuario.length === 1)return alert("L'usuari ha de tenir mes de un caracter")
-        if(reg_contraseña.length === 0)return alert("Has d'introduir un valor de password")
-        if(reg_gmail.length === 0)return alert("Has d'introduir un valor de correu")
+        if (user_without_spaces.length !== reg_usuario.length) return alert("L'usuari no pot tenir espais")
+        if (reg_usuario.length === 0) return alert("Has d'introduir un valor de usuari")
+        if (reg_usuario.length === 1) return alert("L'usuari ha de tenir mes de un caracter")
+        if (reg_contraseña.length === 0) return alert("Has d'introduir un valor de password")
+        if (reg_gmail.length === 0) return alert("Has d'introduir un valor de correu")
 
 
         Axios.post("http://localhost:3001/api/ComprobarUsuario", { usuario: reg_usuario }).then((res) => registro(res.data.mensaje, reg_usuario, reg_contraseña, reg_gmail))
@@ -47,7 +47,7 @@ function Login() {
             alert("L'usuari ja existeix");
         }
     }
-    
+
     function RespuestaLogin(res, usuari) {
         if (res === "True") {
             sessionStorage.setItem("Usuari", JSON.stringify({
@@ -57,60 +57,58 @@ function Login() {
             history.push("/perfil");
         }
         else {
-            alert(res);            
+            alert(res);
         }
     }
 
     return (<div id="todo">
-            <div class="clouds"></div>
-                <div class="fogContainer">
-                    <div class="fog">
-
-                        
-                    </div>
-                    <div id="log_id" className="App" >
-               
-               <div id="titulo" className="row"><img id="tit_login" src={titulo}/></div>
-               <div className="containerlog">                 
-                   <div id="row_log" >
-                       <div id="login" >
-                           <div id="log_title" className="row"><h3>Log In</h3></div>
-                           <div className="row"><label>User</label></div>
-                           <div className="row input"><input id="inptxt" onChange={(e) => { setusuario(e.target.value); }} type="text" placeholde="data" name="user" /></div>
-                           <div className="row"><label>Password</label></div>
-                           <div className="row input"><input id="inptxt" onChange={(e) => { setcontraseña(e.target.value); }} type="password" name="pass" /><br></br></div>
-                           {/* <button className="boton" onClick={login}>Entrar</button> */}
-                           <img onClick={login} id="botonlog" src={boton}/>
-                       </div>
-                   </div>
-                   <img id="cadena_isq" src={cadenas}/>
-                   <img id="cadena_de" src={cadenas}/>
-                   <img id="cadena_2" src={cadenas2}/>
-                   <div id="row_reg" >
-                       <div id="Register" >
-                           <div id="log_title" className="row"><h3>Register</h3></div>
-                           <div className="row"><label>User</label></div>
-                           <div className="row input"><input id="inptxt" onChange={(e) => { setusuarioreg(e.target.value); }} type="text" placeholde="data" name="user" /></div>
-                           <div className="row"><label >Password</label></div>
-                           <div className="row input"><input id="inptxt" onChange={(e) => { setcontraseñareg(e.target.value); }} type="password" name="pass" /><br></br></div>
-                           <div className="row"><label>Gmail</label></div>
-                           <div className="row input"><input  id="inptxt" onChange={(e) => { setgmailreg(e.target.value); }} type="text" name="pass" /><br></br></div>                   
-                       </div>
-                   </div>
-                   <img id="cadena_2_2" src={cadenas2}/>
-                   <div className="row">
-                       {/* <button className="boton" onClick={register}>Entrar</button> */}
-                      
-                       </div>
-                       <img onClick={register} id="boton2" src={boton}/>
-               </div>
-               <div id="invisible_box">
-               </div>
-           </div>
-                </div>
-           
-            
+        <div className="clouds"></div>
+        <div className="fogContainer">
+            <div className="fog">
             </div>
+            <div id="log_id" className="App" >
+
+                <div id="titulo" className="row"><img id="tit_login" src={titulo} alt=""/></div>
+                <div className="containerlog">
+                    <div id="row_log" >
+                        <div id="login" >
+                            <div id="log_title" className="row"><h3>Log In</h3></div>
+                            <div className="row"><label>User</label></div>
+                            <div className="row input"><input id="inptxt" onChange={(e) => { setusuario(e.target.value); }} type="text" placeholde="data" name="user" /></div>
+                            <div className="row"><label>Password</label></div>
+                            <div className="row input"><input id="inptxt" onChange={(e) => { setcontraseña(e.target.value); }} type="password" name="pass" /><br></br></div>
+                            {/* <button className="boton" onClick={login}>Entrar</button> */}
+                            <img onClick={login} id="botonlog" src={boton} alt=""/>
+                        </div>
+                    </div>
+                    <img id="cadena_isq" src={cadenas} alt=""/>
+                    <img id="cadena_de" src={cadenas} alt=""/>
+                    <img id="cadena_2" src={cadenas2} alt=""/>
+                    <div id="row_reg" >
+                        <div id="Register" >
+                            <div id="log_title" className="row"><h3>Register</h3></div>
+                            <div className="row"><label>User</label></div>
+                            <div className="row input"><input id="inptxt" onChange={(e) => { setusuarioreg(e.target.value); }} type="text" placeholde="data" name="user" /></div>
+                            <div className="row"><label >Password</label></div>
+                            <div className="row input"><input id="inptxt" onChange={(e) => { setcontraseñareg(e.target.value); }} type="password" name="pass" /><br></br></div>
+                            <div className="row"><label>Gmail</label></div>
+                            <div className="row input"><input id="inptxt" onChange={(e) => { setgmailreg(e.target.value); }} type="text" name="pass" /><br></br></div>
+                        </div>
+                    </div>
+                    <img id="cadena_2_2" src={cadenas2} alt=""/>
+                    <div className="row">
+                        {/* <button className="boton" onClick={register}>Entrar</button> */}
+
+                    </div>
+                    <img onClick={register} id="boton2" src={boton} alt=""/>
+                </div>
+                <div id="invisible_box">
+                </div>
+            </div>
+        </div>
+
+
+    </div>
     );
 }
 
