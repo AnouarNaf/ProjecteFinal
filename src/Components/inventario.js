@@ -40,7 +40,7 @@ class Inventario extends React.Component{
                     </Row>
                 </Container>    
             </div>
-            {!this.state.Monstruo ?  "Tria un Monstre": 
+            {!this.state.Monstruo ?  "": 
             <div id="Stats" >
                     <Container>
                         <Row>
