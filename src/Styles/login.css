@@ -87,6 +87,9 @@ body{
     position:relative;
     bottom: 20%;
   }
+  .botons{
+    cursor: pointer;
+  }
   #row_log{
     z-index: 1;
     left: 22%;

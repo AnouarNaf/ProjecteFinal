@@ -87,7 +87,7 @@ function Login() {
                             <div className="row"><label>Password</label></div>
                             <div className="row input"><input id="inptxt" onChange={(e) => { setcontraseña(e.target.value); }} type="password" name="pass" /><br></br></div>
                             {/* <button className="boton" onClick={login}>Entrar</button> */}
-                            <img onClick={login} id="botonlog" src={boton} alt=""/>
+                            <img onClick={login} id="botonlog" className="botons" src={boton} alt=""/>
                         </div>
                     </div>
                     <img id="cadena_isq" src={cadenas} alt=""/>
@@ -109,7 +109,7 @@ function Login() {
                         {/* <button className="boton" onClick={register}>Entrar</button> */}
 
                     </div>
-                    <img onClick={register} id="boton2" src={boton} alt=""/>
+                    <img onClick={register} id="boton2" src={boton} alt="" className="botons"/>
                 </div>
                 <div id="invisible_box">
                 </div>
