@@ -1,15 +1,12 @@
 import React, { useState} from 'react';
 import '../Styles/login.css';
 import Axios from "axios";
-<<<<<<< HEAD
+
 import {
     useHistory
 } from "react-router-dom";
 import cadenas from '../imgs/Login/cadenas.png';
-=======
-import { useHistory } from "react-router-dom";
 
->>>>>>> e087c44f810f91d256d1d44321be2c0a4688525f
 function Login() {
     const history = useHistory();
     //-----------Login--------------//
