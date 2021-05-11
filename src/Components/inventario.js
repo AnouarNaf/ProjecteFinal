@@ -8,7 +8,6 @@ class Inventario extends React.Component{
         monsterid: []
     }
     sleeccion_m(idmonstruo){
-        console.log(idmonstruo);
         Axios.post("http://localhost:3001/api/GetMonstruo_info", { usuario: JSON.parse(sessionStorage.getItem("Usuari")).usuari, idmonstruo: idmonstruo })
         .then((res)=> this.setState({
             Monstruo: res.data.rows ,
@@ -23,9 +22,6 @@ class Inventario extends React.Component{
             
         }))
     }
-    imgs(){
-        console.log("clic");
-    }
     render(){
         return(
             <div className="container">
@@ -36,9 +32,9 @@ class Inventario extends React.Component{
                 <Container className="cont_inv">
                     <Row className="row_inv">
                     {!this.state.imagenes ? "Cargando" :this.state.imagenes.map((x,i) =>{
-                            return(<Col onClick={() => this.sleeccion_m(x.idMonstre)} className="celda"> <img width="60px" height="60px" id="imgs_celdas"
-                    src={x.img}
-                        /> </Col>)
+                            return(<Col onClick={() => this.sleeccion_m(x.idMonstre)} className="celda" key={i}>
+                                <img width="60px" height="60px" id="imgs_celdas" src={x.img} alt="Monstruos"/>
+                                </Col>)
                     })
                     }   
                     </Row>
@@ -55,7 +51,7 @@ class Inventario extends React.Component{
                     </Row>
                         <Row>
                             <div id="img_prueba"> 
-                                <img width="100px" height="160px" id="imgs_celdas"   src= {this.state.Monstruo[0].img }   />   </div>
+                                <img width="100px" height="160px" id="imgs_celdas"   src= {this.state.Monstruo[0].img } alt="Monstruos"/>   </div>
                             <div id="stats_img" >
                                 <Container>
                                     <Row id="desc">
