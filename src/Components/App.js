@@ -10,6 +10,7 @@ import {
 import Perfil from './Perfil';
 import Login from './login';
 import PrivateRoute from './PrivateRoute';
+import Entrenamiento from './Entrenamiento';
 
 function App() {
     return (
@@ -17,11 +18,14 @@ function App() {
             <div>
                 <Switch>
                     <Route path="/login" component={ Login }/>
-                    <PrivateRoute exact path="/perfil" component={ Perfil }/>
+                    <PrivateRoute exact path="/Perfil" component={ Perfil }/>
+                    <PrivateRoute exact path="/Entrenamiento" component={ Entrenamiento }/>
+                    <PrivateRoute exact path="/Pvp" component={ Perfil }/>
+                    <PrivateRoute exact path="/Friends" component={ Perfil }/>
                     <Redirect to="/login"/>
                 </Switch>
             </div>
-        </BrowserRouter>        
+        </BrowserRouter>
     );
 }
 
