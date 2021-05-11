@@ -68,7 +68,7 @@ function Login() {
     const Key = useKeypress('Enter', () => {
         // Do something when the user has pressed the Escape key
         login();
-      });
+    });
 
     return (<div id="todo">
         <div className="clouds"></div>
@@ -77,7 +77,7 @@ function Login() {
             </div>
             <div id="log_id" className="App" >
 
-                <div id="titulo" className="row"><img id="tit_login" src={titulo} alt=""/></div>
+                <div id="titulo" className="row"><img id="tit_login" src={titulo} alt="" /></div>
                 <div className="containerlog">
                     <div id="row_log" >
                         <div id="login" >
@@ -87,12 +87,12 @@ function Login() {
                             <div className="row"><label>Password</label></div>
                             <div className="row input"><input id="inptxt" onChange={(e) => { setcontraseña(e.target.value); }} type="password" name="pass" /><br></br></div>
                             {/* <button className="boton" onClick={login}>Entrar</button> */}
-                            <img onClick={login} id="botonlog" className="botons" src={boton} alt=""/>
+                            <img onClick={login} id="botonlog" className="botons" src={boton} alt="" />
                         </div>
                     </div>
-                    <img id="cadena_isq" src={cadenas} alt=""/>
-                    <img id="cadena_de" src={cadenas} alt=""/>
-                    <img id="cadena_2" src={cadenas2} alt=""/>
+                    <img id="cadena_isq" src={cadenas} alt="" />
+                    <img id="cadena_de" src={cadenas} alt="" />
+                    <img id="cadena_2" src={cadenas2} alt="" />
                     <div id="row_reg" >
                         <div id="Register" >
                             <div id="log_title" className="row"><h3>Register</h3></div>
@@ -104,19 +104,15 @@ function Login() {
                             <div className="row input"><input id="inptxt" onChange={(e) => { setgmailreg(e.target.value); }} type="text" name="pass" /><br></br></div>
                         </div>
                     </div>
-                    <img id="cadena_2_2" src={cadenas2} alt=""/>
+                    <img id="cadena_2_2" src={cadenas2} alt="" />
                     <div className="row">
                         {/* <button className="boton" onClick={register}>Entrar</button> */}
 
                     </div>
-                    <img onClick={register} id="boton2" src={boton} alt="" className="botons"/>
-                </div>
-                <div id="invisible_box">
+                    <img onClick={register} id="boton2" src={boton} alt="" className="botons" />
                 </div>
             </div>
         </div>
-
-
     </div>
     );
 }

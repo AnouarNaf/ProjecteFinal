@@ -70,11 +70,11 @@ body{
     z-index: 1;
     width:720px;
     height: 1080px;
-    background-image: url("../imgs/fondo.jpg"); 
+    background-image: url("../imgs/fondo.jpg");
+    margin: auto;
   }
   #log_id{
     border:black 4px solid;
-    left: 30% !important;
     position: relative !important;
   }
   #botonlog{
