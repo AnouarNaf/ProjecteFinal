@@ -1,3 +1,10 @@
+body{
+  background-color: black;
+}
+#tit_login{
+  position: relative;
+  right:11%;
+}
 #cartel {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: white;
@@ -60,11 +67,28 @@
     position:relative;
   }
   .App{
+    z-index: 1;
     width:720px;
     height: 1080px;
     background-image: url("../imgs/fondo.jpg");
   }
+  #log_id{
+    border:black 4px solid;
+    left: 30% !important;
+    position: relative !important;
+  }
+  #botonlog{
+    z-index: 10;
+    position: relative;
+    top:40%;
+  }
+  #boton2{
+    z-index: 10;
+    position:relative;
+    bottom: 20%;
+  }
   #row_log{
+    z-index: 1;
     left: 22%;
     background-image: url(../imgs/Login/Login_Tablero.png);
     background-size: cover;
@@ -101,9 +125,11 @@
   #inptxt{
     width: 150px;
   }
-  .container{
+  .containerlog{
     width: 100%;
     height: 100%;
+    position: relative;
+    top:2%;
   }
   #log_title{
     color: white;
@@ -124,4 +150,117 @@
     height: 30%;
     color: white;
     font-style: normal;
+    z-index: 1;
   }
+  #cadena_2{
+    position: absolute;
+    z-index: 0;
+    left: 40%;
+    top:25%;
+  }
+  #cadena_2_2{
+    position: relative;
+    z-index: 0;
+    left: 0%;
+    bottom:10%;
+    z-index: 0;
+  }
+  #todo{
+    background-image: url("../imgs/fondo_fondo.jpg");
+    width: 100%;
+    height: 100vh;
+  }
+
+  /*--------------------------------------------------*/
+  * {
+    margin: 0;
+    padding: 0;
+ }
+  body {
+    background: #000;
+    height: 100vh;
+    overflow: hidden;
+ }
+
+   .clouds {
+     opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+ }
+  .clouds {
+    background: transparent url('../imgs/fog.png') repeat top center;
+    z-index: 3;
+    height: 150%;
+    animation: cloudsFrames 300s linear infinite;
+ }
+  .fogContainer {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    z-index: 7;
+ }
+  .fog {
+    position: absolute;
+    left: -50%;
+    top: -30%;
+    width: 200%;
+    height: 200%;
+    animation-name: fogFrames;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    background: linear-gradient(-5deg #00000000 0%, #ffffff15 40%, #74590121 45%, #8b845b21 55%, #00000000 100%);
+ }
+  @keyframes fogFrames {
+    0% {
+      transform: none;
+   }
+    10% {
+      transform: scaleY(0.5) translate(5%, -2%) rotate(15deg);
+   }
+    25% {
+      transform: scaleY(0.3) translate(10%, 7%);
+   }
+    50% {
+      transform: scaleY(0.7) rotate(-15deg);
+   }
+    75% {
+      transform: scaleY(1) translate(7%, -2%);
+   }
+    100% {
+      transform: none;
+   }
+ }
+  @keyframes twinkleFrames {
+    from {
+      background-position: 0 0;
+   }
+    to {
+      background-position: -10000px 5000px;
+   }
+ }
+  @keyframes twinkleFrames2 {
+    from {
+      background-position: 0 0;
+   }
+    to {
+      background-position: 10000px 5000px;
+   }
+ }
+  @keyframes cloudsFrames {
+    from {
+      background-position: 0 0;
+   }
+    to {
+      background-position: 10000px 0;
+   }
+ }
+  

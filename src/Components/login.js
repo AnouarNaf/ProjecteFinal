@@ -6,7 +6,9 @@ import {
     useHistory
 } from "react-router-dom";
 import cadenas from '../imgs/Login/cadenas.png';
-
+import cadenas2 from '../imgs/Login/cadena_2.png';
+import boton from '../imgs/Login/boton.png';
+import titulo from '../imgs/Login/titulo.png';
 function Login() {
     const history = useHistory();
     //-----------Login--------------//
@@ -59,38 +61,55 @@ function Login() {
         }
     }
 
-    return (
-            <div className="App" >
-                <div id="titulo" className="row"><h1>Bestiario</h1></div>
-                <div className="container">                 
-                    <div id="row_log" >
-                        <div id="login" >
-                            <div id="log_title" className="row"><h3>Log In</h3></div>
-                            <div className="row"><label>User</label></div>
-                            <div className="row input"><input id="inptxt" onChange={(e) => { setusuario(e.target.value); }} type="text" placeholde="data" name="user" /></div>
-                            <div className="row"><label>Password</label></div>
-                            <div className="row input"><input id="inptxt" onChange={(e) => { setcontraseña(e.target.value); }} type="password" name="pass" /><br></br></div>
-                            <button onClick={login}>Entrar</button>
-                        </div>
+    return (<div id="todo">
+            <div class="clouds"></div>
+                <div class="fogContainer">
+                    <div class="fog">
+
+                        
                     </div>
-                    <img id="cadena_isq" src={cadenas}/>
-                    <img id="cadena_de" src={cadenas}/>
-                    <div id="row_reg" >
-                        <div id="Register" >
-                            <div id="log_title" className="row"><h3>Register</h3></div>
-                            <div className="row"><label>User</label></div>
-                            <div className="row input"><input id="inptxt" onChange={(e) => { setusuarioreg(e.target.value); }} type="text" placeholde="data" name="user" /></div>
-                            <div className="row"><label >Password</label></div>
-                            <div className="row input"><input id="inptxt" onChange={(e) => { setcontraseñareg(e.target.value); }} type="password" name="pass" /><br></br></div>
-                            <div className="row"><label>Gmail</label></div>
-                            <div className="row input"><input  id="inptxt" onChange={(e) => { setgmailreg(e.target.value); }} type="text" name="pass" /><br></br></div>
-                            
-                        </div>
-                    </div>
-                    <div className="row"><button onClick={register}>Entrar</button></div>
+                    <div id="log_id" className="App" >
+               
+               <div id="titulo" className="row"><img id="tit_login" src={titulo}/></div>
+               <div className="containerlog">                 
+                   <div id="row_log" >
+                       <div id="login" >
+                           <div id="log_title" className="row"><h3>Log In</h3></div>
+                           <div className="row"><label>User</label></div>
+                           <div className="row input"><input id="inptxt" onChange={(e) => { setusuario(e.target.value); }} type="text" placeholde="data" name="user" /></div>
+                           <div className="row"><label>Password</label></div>
+                           <div className="row input"><input id="inptxt" onChange={(e) => { setcontraseña(e.target.value); }} type="password" name="pass" /><br></br></div>
+                           {/* <button className="boton" onClick={login}>Entrar</button> */}
+                           <img onClick={login} id="botonlog" src={boton}/>
+                       </div>
+                   </div>
+                   <img id="cadena_isq" src={cadenas}/>
+                   <img id="cadena_de" src={cadenas}/>
+                   <img id="cadena_2" src={cadenas2}/>
+                   <div id="row_reg" >
+                       <div id="Register" >
+                           <div id="log_title" className="row"><h3>Register</h3></div>
+                           <div className="row"><label>User</label></div>
+                           <div className="row input"><input id="inptxt" onChange={(e) => { setusuarioreg(e.target.value); }} type="text" placeholde="data" name="user" /></div>
+                           <div className="row"><label >Password</label></div>
+                           <div className="row input"><input id="inptxt" onChange={(e) => { setcontraseñareg(e.target.value); }} type="password" name="pass" /><br></br></div>
+                           <div className="row"><label>Gmail</label></div>
+                           <div className="row input"><input  id="inptxt" onChange={(e) => { setgmailreg(e.target.value); }} type="text" name="pass" /><br></br></div>                   
+                       </div>
+                   </div>
+                   <img id="cadena_2_2" src={cadenas2}/>
+                   <div className="row">
+                       {/* <button className="boton" onClick={register}>Entrar</button> */}
+                      
+                       </div>
+                       <img onClick={register} id="boton2" src={boton}/>
+               </div>
+               <div id="invisible_box">
+               </div>
+           </div>
                 </div>
-                <div id="invisible_box">
-                </div>
+           
+            
             </div>
     );
 }
