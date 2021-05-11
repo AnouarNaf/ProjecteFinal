@@ -23,20 +23,26 @@ function Login() {
         /*.then((res) => setDataC(res.data.mensaje)).then((res)=> alerta(res.data.mensaje))*/
     }
     const register = () => {
-        Axios.post("http://localhost:3001/api/ComprobarUsuario", { usuario: reg_usuario }).then((res) => registro(res.data.mensaje, reg_usuario, reg_contraseña, reg_gmail))
 
+        const user_without_spaces = reg_usuario.replace(/\s/g, '');
+        if(user_without_spaces.length !== reg_usuario.length)return alert("L'usuari no pot tenir espais")
+        if(reg_usuario.length === 0)return alert("Has d'introduir un valor de usuari")
+        if(reg_usuario.length === 1)return alert("L'usuari ha de tenir mes de un caracter")
+        if(reg_contraseña.length === 0)return alert("Has d'introduir un valor de password")
+        if(reg_gmail.length === 0)return alert("Has d'introduir un valor de correu")
+
+
+        Axios.post("http://localhost:3001/api/ComprobarUsuario", { usuario: reg_usuario }).then((res) => registro(res.data.mensaje, reg_usuario, reg_contraseña, reg_gmail))
         /*.then((res) => setDataC(res.data.mensaje)).then((res)=> alerta(res.data.mensaje))*/
     }
 
     /* FUNCTIONS */
 
     function registro(x, user, password, email) {
-        console.log(x);
         if (x === "false") {
-            alert("el usuario es correcto");
-            Axios.post("http://localhost:3001/api/InsertarUsuario", { usuario: user, contraseña: password, gmail: email }).then((res) => alert(res.data.mensaje))
+            Axios.post("http://localhost:3001/api/InsertarUsuario", { usuario: user, contraseña: password, gmail: email }).then((res) => alert(res.data.mensaje));
         } else {
-            alert("el usuario ya existe");
+            alert("L'usuari ja existeix");
         }
     }
     
