@@ -3,7 +3,8 @@ body {
 }
 #tit_login {
   position: relative;
-  right: 11%;
+  width: 20vw;
+  height: 8vh;
 }
 #cartel {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
@@ -72,10 +73,24 @@ body {
   width: 100%;
   height: 100%;
   position: relative;
+  padding-top: 2vh;
+  z-index: 20;
+}
+
+.background_Formularis{
   background-image: url(../imgs/Login/Login_Tablero.png);
   background-size:100% 100%;
   background-repeat: no-repeat;
 }
+
+#loginUser{
+  height: 3vh;
+}
+
+#loginUser label{
+  vertical-align: top;
+}
+
 #Register {
   width: 100%;
   height: 100%;
@@ -119,27 +134,36 @@ body {
 }
 #cadena_isq {
   position: relative;
-  z-index: 2;
-  right: 20%;
-  bottom: 2%;
+  z-index: 30;
+  right: 7vw;
+  bottom: 2%; 
 }
 #cadena_de {
   position: relative;
-  z-index: 2;
+  z-index: 30;
   left: 20%;
   bottom: 2%;
 }
 .input {
   background-image: url("../imgs/Login/inputs.png");
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: 100% 100%;
   position: relative;
-
   margin: auto;
+  width: max-content;
+  height: min-content;
 }
 #inptxt {
-  width: 150px;
+  width: 8vw;
+  height: 2.5vh;
+  vertical-align: top;
+  margin:1vh;
+  font-size: 2vh;
 }
+
+/* #inputs{
+  height: 5vh;
+} */
 .containerlog {
   width: 100%;
   height: 100%;
@@ -148,18 +172,24 @@ body {
 }
 #log_title {
   color: white;
+  position: relative;
 }
+
+#log_title > h3{
+  font-size:3vh;
+}
+
+.row label{
+  font-size:2vh;
+}
+
 #titulo {
-  color: white;
-  padding-top: 5%;
-  font-size: 200%;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  padding-top: 4vh;
+  margin:auto;
 }
 #row_reg {
   left: 22%;
   bottom: 5%;
-  background-image: url(../imgs/Login/Login_Tablero.png);
-  background-size: cover;
   position: relative;
   width: 56%;
   height: 30%;
@@ -284,5 +314,18 @@ body {
   }
   to {
     background-position: 10000px 0;
+  }
+}
+
+@media all and (min-width: 50px) and (max-width: 640px) {
+  .input{
+    height: 5vh;
+  }
+  #inptxt{
+    height: 0.9vh;
+    font-size: 1.2vh;
+  }
+  #titulo {
+    padding-top: 0;
   }
 }
