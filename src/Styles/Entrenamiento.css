@@ -1,4 +1,4 @@
-#inventario{
+#lista{
     left: 10%;
     text-align: center;
     border: black 5px solid;
@@ -9,7 +9,7 @@
     color: white;
     font-style: normal;
 }
-#Stats{
+#estadistiques{
     text-align: center;
     left: 10%;
     margin-top: 10%;
@@ -41,4 +41,13 @@
 .imatges {
     width: 150px;
     height: 150px;
+}
+#monstresPlayer1 {
+    position: relative;
+    left: 20px;
+}
+#monstresPlayer2 {
+    top: 0px;
+    position: absolute;
+    right: 20px;
 }
