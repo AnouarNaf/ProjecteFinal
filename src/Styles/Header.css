@@ -8,3 +8,12 @@
 .LinkLog{
     color:white;
 }
+#title_submenu{
+    margin-left: 25%;
+    background-color: black;
+    padding: 2%;
+    border: white 2px solid;
+    width: 25%;
+    bottom:13px;
+    position: relative;
+}

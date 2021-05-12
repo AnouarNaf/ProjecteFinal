@@ -1,0 +1,23 @@
+.Registre_partides{
+    position: relative;
+    background-color: black;
+    left: 100%;
+    bottom: 193%;
+    text-align: center;
+}
+.descripcion_stats{
+    width: 200%;
+    background-color: black;
+    height: 100%;
+    margin-top:10%;
+}
+#nombre_bicho{
+    font-size: 140%;
+    margin-bottom: 2%;
+    left: 50%;
+    position: relative;
+}
+.subnivel{
+    margin-left: 10%;
+    position: relative;
+}
