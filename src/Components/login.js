@@ -81,13 +81,6 @@ function Login() {
                 <div className="containerlog">
                     <div id="row_log" >
                         <div id="login" >
-                            <div id="log_title" className="row"><h3>Log In</h3></div>
-                            <div className="row"><label>User</label></div>
-                            <div className="row input"><input id="inptxt" onChange={(e) => { setusuario(e.target.value); }} type="text" placeholde="data" name="user" /></div>
-                            <div className="row"><label>Password</label></div>
-                            <div className="row input"><input id="inptxt" onChange={(e) => { setcontraseña(e.target.value); }} type="password" name="pass" /><br></br></div>
-                            {/* <button className="boton" onClick={login}>Entrar</button> */}
-                            <img onClick={login} id="botonlog" className="botons" src={boton} alt="" />
                         </div>
                     </div>
                     <img id="cadena_isq" src={cadenas} alt="" />
