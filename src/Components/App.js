@@ -11,6 +11,7 @@ import Perfil from './Perfil';
 import Login from './login';
 import PrivateRoute from './PrivateRoute';
 import Entrenamiento from './Entrenamiento';
+import Settings from './Settings';
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                     <PrivateRoute exact path="/Entrenamiento" component={ Entrenamiento }/>
                     <PrivateRoute exact path="/Pvp" component={ Perfil }/>
                     <PrivateRoute exact path="/Friends" component={ Perfil }/>
+                    <PrivateRoute exact path="/Settings" component={ Settings }/>
                     <Redirect to="/login"/>
                 </Switch>
             </div>
