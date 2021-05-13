@@ -69,8 +69,9 @@ export default class Entrenamiento extends react.Component {
                             <div>
                                 <div id="monstresPlayer1">
                                     <Row>
-                                        Nom: {this.state.Monstruo[0].Nom }   
+                                        <img src={this.state.Monstruo[0].img } className="imatges" alt="imatgeMonstre"></img>  
                                     </Row>
+                                    {/* 
                                     <Row>
                                         vida: {this.state.Monstruo[0].Vida }   
                                     </Row>
@@ -82,9 +83,12 @@ export default class Entrenamiento extends react.Component {
                                     </Row>
                                     <Row>
                                         Esquiva:  {this.state.Monstruo[0].Esquiva }   
-                               </Row> 
+                                    </Row> 
+                                     */}
                                 </div>
                                 <div id="monstresPlayer2">
+                                    <img src={this.state.Monstruo[0].img } id="imatge2" className="imatges" alt="imatgeMonstre"></img>
+                                    {/* 
                                     <Row>
                                         Nom: {this.state.Monstruo[0].Nom }   
                                     </Row>
@@ -99,7 +103,7 @@ export default class Entrenamiento extends react.Component {
                                     </Row>
                                     <Row>
                                         Esquiva:  {this.state.randESQ }   
-                                    </Row> 
+                                    </Row> */}   
                                 </div>
                                 </div>
                             }
