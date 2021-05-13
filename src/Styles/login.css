@@ -71,7 +71,7 @@ body {
 /*             */
 #login {
   width: 100%;
-  height: 100%;
+  height: 25vh;
   position: relative;
   padding-top: 2vh;
   z-index: 20;
@@ -83,19 +83,20 @@ body {
   background-repeat: no-repeat;
 }
 
-#loginUser{
-  height: 3vh;
+.divsLabels{
+  height: 3vh !important;
 }
 
-#loginUser label{
+label{
   vertical-align: top;
 }
 
 #Register {
   width: 100%;
-  height: 100%;
-  padding-top: 1%;
+  height: 32vh;
+  padding-top: 2vh;
   position: relative;
+  /* bottom: 3vh; */
 }
 .App {
   z-index: 1;
@@ -107,42 +108,55 @@ body {
   margin: auto;
 }
 #log_id {
-  border: black 4px solid;
+  /* border: black 1vw solid; */
   position: relative !important;
 }
-#botonlog {
+
+.botonEnter{
   z-index: 10;
   position: relative;
-  top: 40%;
+  height: 8vh;
+  width: 10vw;
+  cursor: pointer;
+  vertical-align: top;
+}
+
+.botonEnter:hover{
+  opacity: 90%;
+}
+#botonlog {
+  top: 7vh;
 }
 #boton2 {
-  z-index: 10;
-  position: relative;
-  bottom: 20%;
-}
-.botons {
-  cursor: pointer;
+  bottom: 13vh;
 }
 #row_log {
   margin: auto;
   position: relative;
   width: 56%;
-  height: 30%;
   color: white;
   font-style: normal;
   padding: 0;
 }
 #cadena_isq {
-  position: relative;
+  /* position: relative;
   z-index: 30;
   right: 7vw;
-  bottom: 2%; 
+  bottom: 2%;  */
+  position:relative;
+  right:7vw;
+  z-index: 30;
+  height: 16vh;
+  bottom: 1.5vh;
+  vertical-align: top;
 }
 #cadena_de {
   position: relative;
   z-index: 30;
-  left: 20%;
-  bottom: 2%;
+  left: 7vw;
+  bottom: 1.5vh;
+  height: 16vh;
+  vertical-align: top;
 }
 .input {
   background-image: url("../imgs/Login/inputs.png");
@@ -161,12 +175,9 @@ body {
   font-size: 2vh;
 }
 
-/* #inputs{
-  height: 5vh;
-} */
 .containerlog {
   width: 100%;
-  height: 100%;
+  height: 83vh;
   position: relative;
   top: 2%;
 }
@@ -186,6 +197,7 @@ body {
 #titulo {
   padding-top: 4vh;
   margin:auto;
+  font-size: 0;
 }
 #row_reg {
   left: 22%;
@@ -200,15 +212,18 @@ body {
 #cadena_2 {
   position: absolute;
   z-index: 0;
-  left: 40%;
-  top: 25%;
+  left: 14vw;
+  height: 20vh;
+  width: 8vw;
+  top:24vh;
 }
 #cadena_2_2 {
   position: relative;
   z-index: 0;
   left: 0%;
   bottom: 10%;
-  z-index: 0;
+  height: 20vh;
+  width: 8vw;
 }
 #todo {
   background-image: url("../imgs/fondo_fondo.jpg");
@@ -226,7 +241,6 @@ body {
 body {
   background: #000;
   height: 100vh;
-  overflow: hidden;
 }
 
 .clouds {
@@ -237,13 +251,15 @@ body {
   right: 0;
   bottom: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: block;
 }
 .clouds {
-  background: transparent url("../imgs/fog.png") repeat top center;
+  background: transparent url("../imgs/sss/fog.png");
+  /* background-repeat: no-repeat; */
+  background-size: 100% 100%;
   z-index: 3;
-  height: 150%;
+  height: 100vh;
   animation: cloudsFrames 300s linear infinite;
 }
 .fogContainer {
@@ -326,6 +342,44 @@ body {
     font-size: 1.2vh;
   }
   #titulo {
-    padding-top: 0;
+    padding-top: 3vh;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #log_id {
+    width: 100vw;
+  }
+  #tit_login{
+    width: 70vw;
+  }
+  #inptxt {
+    width: 30vw;
+    height: 2vh;
+    font-size: 2.2vh;
+  }
+  #cadena_2 {
+    left: 50%;
+    height: 20vh;
+    width: 15vw;
+    top:24vh;
+    transform: translate(-50%, -50%);
+  }
+  #cadena_isq {
+    right:18vw;
+    height: 16vh;
+    bottom: 2vh;
+  }
+  #cadena_de {
+    left: 18vw;
+    bottom: 2vh;
+    height: 16vh;
+  }
+  .botonEnter{
+    height: 7vh;
+    width: 22vw;
+  }
+  #cadena_2_2 {
+    height: 20vh;
+    width: 15vw;
   }
 }
