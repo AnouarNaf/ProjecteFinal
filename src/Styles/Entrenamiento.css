@@ -43,11 +43,29 @@
     height: 150px;
 }
 #monstresPlayer1 {
+    top: 80px;
     position: relative;
     left: 20px;
+    animation-name: example2;
+    animation-duration: 1s;
 }
 #monstresPlayer2 {
-    top: 0px;
+    top: 80px;
     position: absolute;
     right: 20px;
+    animation-name: example;
+    animation-duration: 1s;
 }
+#imatge2 {
+    transform: scaleX(-1);
+}
+@keyframes example {
+    0%   {right:20px; top:80px;}
+    50%  {right:200px; top:80px;}
+    100% {right:20px; top:80px;}
+}
+@keyframes example2 {
+    0%   {left:20px; top:80px;}
+    50%  {left:200px; top:80px;}
+    100% {left:20px; top:80px;}
+  }
