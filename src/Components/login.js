@@ -36,6 +36,7 @@ function Login() {
         if (reg_usuario.length === 1) return alert("L'usuari ha de tenir mes de un caracter")
         if (reg_contraseña.length === 0) return alert("Has d'introduir un valor de password")
         if (reg_gmail.length === 0) return alert("Has d'introduir un valor de correu")
+        if (reg_usuario.length > 15) return alert("El maximo de caracteres es de usuario es 15");
 
 
         Axios.post("http://localhost:3001/api/ComprobarUsuario", { usuario: reg_usuario }).then((res) => registro(res.data.mensaje, reg_usuario, reg_contraseña, reg_gmail))
