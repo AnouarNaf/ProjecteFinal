@@ -37,10 +37,19 @@ function Perfil() {
 
 
     return (
-        <div className="perfil" > 
+        <div id="todo">
+             <div class="clouds"></div>
+                <div class="fogContainer">
+                    <div class="fog">
+
+                        
+                    </div>
+        <div id="containerlog" className="perfil" > 
             <Header />
             <Menu />
             <Inventario />
+        </div>
+        </div>
         </div>
     );
 }
