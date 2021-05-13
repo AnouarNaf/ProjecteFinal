@@ -80,27 +80,26 @@ function Login() {
                 <div id="titulo" className="row"><img id="tit_login" src={titulo} alt="" /></div>
                 <div className="containerlog">
                     <div id="row_log" >
-                        <div id="login" >
+                        <div id="login" className="background_Formularis">
                             <div id="log_title" className="row"><h3>Log In</h3></div>
-                            <div className="row"><label>User</label></div>
+                            <div className="row divsLabels"><label>User</label></div>
                             <div className="row input"><input id="inptxt" onChange={(e) => { setusuario(e.target.value); }} type="text" placeholde="data" name="user" /></div>
-                            <div className="row"><label>Password</label></div>
-                            <div className="row input"><input id="inptxt" onChange={(e) => { setcontraseña(e.target.value); }} type="password" name="pass" /><br></br></div>
-                            {/* <button className="boton" onClick={login}>Entrar</button> */}
-                            <img onClick={login} id="botonlog" className="botons" src={boton} alt="" />
+                            <div className="row divsLabels"><label>Password</label></div>
+                            <div className="row input"><input id="inptxt" onChange={(e) => { setcontraseña(e.target.value); }} type="password" name="pass" /><br/></div>
+                            <img onClick={login} id="botonlog" className="botonEnter" src={boton} alt="" />
                         </div>
                     </div>
                     <img id="cadena_isq" src={cadenas} alt="" />
                     <img id="cadena_de" src={cadenas} alt="" />
                     <img id="cadena_2" src={cadenas2} alt="" />
                     <div id="row_reg" >
-                        <div id="Register" >
+                        <div id="Register" className="background_Formularis">
                             <div id="log_title" className="row"><h3>Register</h3></div>
-                            <div className="row"><label>User</label></div>
+                            <div className="row divsLabels"><label>User</label></div>
                             <div className="row input"><input id="inptxt" onChange={(e) => { setusuarioreg(e.target.value); }} type="text" placeholde="data" name="user" /></div>
-                            <div className="row"><label >Password</label></div>
+                            <div className="row divsLabels"><label >Password</label></div>
                             <div className="row input"><input id="inptxt" onChange={(e) => { setcontraseñareg(e.target.value); }} type="password" name="pass" /><br></br></div>
-                            <div className="row"><label>Gmail</label></div>
+                            <div className="row divsLabels"><label>Gmail</label></div>
                             <div className="row input"><input id="inptxt" onChange={(e) => { setgmailreg(e.target.value); }} type="text" name="pass" /><br></br></div>
                         </div>
                     </div>
@@ -109,7 +108,7 @@ function Login() {
                         {/* <button className="boton" onClick={register}>Entrar</button> */}
 
                     </div>
-                    <img onClick={register} id="boton2" src={boton} alt="" className="botons" />
+                    <img onClick={register} id="boton2" src={boton} alt="" className="botonEnter" />
                 </div>
             </div>
         </div>
