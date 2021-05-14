@@ -42,6 +42,10 @@
     width: 150px;
     height: 150px;
 }
+.imatges3:hover {
+    opacity: 30%;
+    cursor: pointer;
+}
 #monstresPlayer1 {
     top: 80px;
     position: relative;
