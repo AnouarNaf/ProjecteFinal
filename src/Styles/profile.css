@@ -116,12 +116,12 @@
 }
 #Stats{
   text-align: center;
-  left: 25%;
+  margin: auto;
   margin-top: 10%;
   border: white 5px solid;
   background: rgb(0,0,0,0.8); ;
   position:relative;
-  width: 50%;
+  width: 75%;
   height: 30%;
   color: white;
   font-style: normal;
