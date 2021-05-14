@@ -4,10 +4,13 @@ import '../Styles/CanviarP.css';
 export default class CanviarP extends react.Component {
     constructor(props) {
         super(props);
+        this.props.ponerState.bind(this);
+        // this.
         this.cancel = this.cancel.bind(this);        
-    }
+      }
     
     cancel(){
+        this.props.ponerState({stat: true});
     }
     render() {
         return (

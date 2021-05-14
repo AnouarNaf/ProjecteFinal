@@ -5,28 +5,23 @@ import '../Styles/Settings.css';
 import Axios from "axios";
 import CanviarP from "./CanviarP";
 
-function changeStat(x){
-    console.log(this.state);
-}
-function posarState(usuari,correu,data,stat){
-    this.setState({ AA:"usuari, correu, data, stat"});
-    console.log("stat POSARSTATE", this.state);
-}
-
 export default class Settings extends react.Component {
     constructor(props) {
         super(props)
-        this.state = {}
-        // changeStat= changeStat.bind(this);
-        posarState = posarState.bind(this);
+        this.state = () => {};
+        this.changeStat= this.changeStat.bind(this);
+        // this.ponerState = this.ponerState.bind(this);
     }
     usuario = JSON.parse(sessionStorage.getItem("Usuari")).usuari;
     async componentDidMount() {
         console.log(this.usuario);
         const res = await Axios.get(`http://localhost:3001/api/GetSettingsUsuari/${this.usuario}`);
         // this.setState({ usuari: res.data[0].Usuari, correu: res.data[0].correu, data: res.data, stat: true });
-        posarState(res.data[0].Usuari, res.data[0].correu,res.data,true);
+        this.setState({usuari:res.data[0].Usuari,correu: res.data[0].correu, data: res.data, stat: true});       
         console.log("state Dentro", this.state);
+    }
+    changeStat(){
+        this.setState({stat:false});
     }
     render() {
         return (
@@ -38,8 +33,8 @@ export default class Settings extends react.Component {
                         <h1>SETTINGS</h1>
                         <p>Usuari: {this.state.usuari}</p>
                         <p>Correu: {this.state.correu}</p>
-                        <p id="canviarCont"  onClick={() => changeStat(false)}>Canviar contrasenya</p>
-                        {!this.state.stat ? <CanviarP /> : <fieldset className="monstresDataGrid">
+                        <p id="canviarCont"  onClick={() => this.changeStat()}>Canviar contrasenya</p>
+                        {!this.state.stat ? <CanviarP ponerState={this.setState}/> : <fieldset className="monstresDataGrid">
                             <legend>Monstres</legend>
                             <table >
                                 <tr>
