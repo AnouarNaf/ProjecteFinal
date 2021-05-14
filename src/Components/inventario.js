@@ -8,11 +8,20 @@ var idmonstrx="";
 var puntos_sin_confirmar=0;
 
 class Inventario extends React.Component{
-    state = {
-        data: [],
-        monsterid: [],
-        puntos_sin_confirmar: 0
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: [],
+            monsterid: [],
+            puntos_sin_confirmar: 0,
+            Fuerza: 0,
+            Vida: 0,
+            Armadura: 0,
+            Esquiva: 0
+        }
+        this.boton_confirmar = this.boton_confirmar.bind(this);
     }
+   
 
     sleeccion_m(idmonstruo){
         Axios.post("http://localhost:3001/api/GetMonstruo_info", { usuario: JSON.parse(sessionStorage.getItem("Usuari")).usuari, idmonstruo: idmonstruo })
@@ -21,20 +30,117 @@ class Inventario extends React.Component{
             nivel: Math.trunc(res.data.rows[0].Punts_Gastats / 5)
          })  )
     }
- subir_daño(dmg,idmons,Punts_Ac){
-       var nuevodaño = dmg +1;
-       var punts = Punts_Ac-1;
-      this.state.puntos_sin_confirmar = this.state.puntos_sin_confirmar+1;
-       console.log(this.state.puntos_sin_confirmar);
-         Axios.post("http://localhost:3001/api/cambiar_dano", { usuario: JSON.parse(sessionStorage.getItem("Usuari")).usuari, idMonstre: idmons, nuevovalor: nuevodaño }).then((res)=>this.setState({      
-         }))
-         Axios.post("http://localhost:3001/api/restar_actius", { usuario: JSON.parse(sessionStorage.getItem("Usuari")).usuari, idMonstre: idmons,actius: punts }).then((res)=>this.setState({      
-         }))
+boton_confirmar(){
+    // this.state.Monstruo[0].Punts_Actius = this.state.Monstruo[0].Punts_Actius- this.state.puntos_sin_confirmar;
+   
+    Axios.post("http://localhost:3001/api/cambiar_stats", { usuario: JSON.parse(sessionStorage.getItem("Usuari"))
+    .usuari, idMonstre: this.state.Monstruo[0].idMonstre, Dany: this.state.Monstruo[0].Dany,
+     Vida: this.state.Monstruo[0].Vida, 
+     Armadura: this.state.Monstruo[0].Armadura, 
+     Esquiva: this.state.Monstruo[0].Esquiva ,
+     PuntosActivos: this.state.Monstruo[0].Punts_Actius,
+     PuntosGastados: this.state.Monstruo[0].Punts_Gastats
+    }).then((res)=>this.setState({  
+                Monstruo: this.state.Monstruo,
+                Fuerza: 0,
+                Armadura: 0,
+                Esquiva: 0,
+                Vida: 0,
+                puntos_sin_confirmar: 0,
+                nivel: Math.trunc(this.state.Monstruo[0].Punts_Gastats / 5)
+            
+      }) )
 
+}
+ subir_stadisticas(estadistica){
+
+     switch(estadistica){
+         case "Fuerza": 
+            this.state.Fuerza = this.state.Fuerza+1;
+            this.state.Monstruo[0].Dany = this.state.Monstruo[0].Dany+1;
+            this.state.Monstruo[0].Punts_Gastats = this.state.Monstruo[0].Punts_Gastats+1;
+         break;
+         case "Esquiva":
+            this.state.Esquiva = this.state.Esquiva+1;
+            this.state.Monstruo[0].Esquiva = this.state.Monstruo[0].Esquiva+1;
+            this.state.Monstruo[0].Punts_Gastats = this.state.Monstruo[0].Punts_Gastats+1;
+         break;
+         case "Vida":
+            this.state.Vida = this.state.Vida+1;  
+            this.state.Monstruo[0].Vida = this.state.Monstruo[0].Vida+1;
+            this.state.Monstruo[0].Punts_Gastats = this.state.Monstruo[0].Punts_Gastats+1;
+         break;
+         case "Armadura":
+            this.state.Armadura = this.state.Armadura+1; 
+            this.state.Monstruo[0].Armadura = this.state.Monstruo[0].Armadura+1;
+            this.state.Monstruo[0].Punts_Gastats = this.state.Monstruo[0].Punts_Gastats+1;
+         break;
+
+     }
+     
+    
+    this.state.Monstruo[0].Punts_Actius = this.state.Monstruo[0].Punts_Actius-1;
+     this.setState({
+         Monstruo: this.state.Monstruo,
+        Fuerza: this.state.Fuerza,
+        Vida: this.state.Vida,
+        Esquiva: this.state.Esquiva,
+        Armadura: this.state.Armadura
+     })
+    this.state.puntos_sin_confirmar = this.state.puntos_sin_confirmar+1;
     }
-    setM_id(x,y){
+    bajar_stadisticas(estadistica){
+      switch(estadistica){
+                case "Fuerza":
+                    if(this.state.Fuerza > 0){
+                        this.state.Fuerza = this.state.Fuerza-1;
+                        this.state.Monstruo[0].Punts_Gastats = this.state.Monstruo[0].Punts_Gastats-1;
+                        this.state.Monstruo[0].Dany = this.state.Monstruo[0].Dany-1
+                        this.state.puntos_sin_confirmar = this.state.puntos_sin_confirmar-1;
+                        this.state.Monstruo[0].Punts_Actius = this.state.Monstruo[0].Punts_Actius+1;
+                    };
+                break;
+                case "Esquiva":
+                    if(this.state.Esquiva > 0){
+                        this.state.Esquiva = this.state.Esquiva-1;
+                        this.state.Monstruo[0].Punts_Gastats = this.state.Monstruo[0].Punts_Gastats-1;
+                        this.state.Monstruo[0].Esquiva = this.state.Monstruo[0].Esquiva-1;
+                        this.state.puntos_sin_confirmar = this.state.puntos_sin_confirmar-1;
+                        this.state.Monstruo[0].Punts_Actius = this.state.Monstruo[0].Punts_Actius+1;
+                    }
+                break;
+                case "Vida":
+                    if(this.state.Vida > 0){
+                        this.state.Vida = this.state.Vida-1;
+                        this.state.Monstruo[0].Punts_Gastats = this.state.Monstruo[0].Punts_Gastats-1;
+                        this.state.Monstruo[0].Vida = this.state.Monstruo[0].Vida-1;
+                        this.state.puntos_sin_confirmar = this.state.puntos_sin_confirmar-1;
+                        this.state.Monstruo[0].Punts_Actius = this.state.Monstruo[0].Punts_Actius+1;
+                    }
+                break;
+                case "Armadura":
+                    if(this.state.Armadura > 0){
+                        this.state.Armadura = this.state.Armadura-1;
+                        this.state.Monstruo[0].Punts_Gastats = this.state.Monstruo[0].Punts_Gastats-1;
+                        this.state.Monstruo[0].Armadura = this.state.Monstruo[0].Armadura-1;
+                        this.state.puntos_sin_confirmar = this.state.puntos_sin_confirmar-1;
+                        this.state.Monstruo[0].Punts_Actius = this.state.Monstruo[0].Punts_Actius+1;
+                    }
+                    break;
+            }
+        
       
+        this.setState({
+            Monstruo: this.state.Monstruo,
+            Fuerza: this.state.Fuerza,
+            Vida: this.state.Vida,
+            Esquiva: this.state.Esquiva,
+            Armadura: this.state.Armadura  
+        })
+       
     }
+       
+ 
    async componentDidMount(){
     //    const x = await Axios.post("http://localhost:3001/api/GetMonstruos2", { usuario: JSON.parse(sessionStorage.getItem("Usuari")).usuari })
     //     console.log(x);
@@ -42,6 +148,7 @@ class Inventario extends React.Component{
             imagenes: res.data.rows
             
         }))
+        
     }
     render(){
         return(
@@ -80,21 +187,28 @@ class Inventario extends React.Component{
                                </Row>
                                     <Row>
                                        vida: {this.state.Monstruo[0].Vida }  
-                                       {this.state.Monstruo[0].Punts_Actius ==  0 ? null :<img  className="subnivel"  src={subirnivel}/>}
-                                       {this.state.Monstruo[0].Punts_Actius ==  0 ? null : 0}
+                                       {this.state.Monstruo[0].Punts_Actius ==  0 ? null :
+                                       <button href="#" onClick={() => this.subir_stadisticas("Vida")}>+</button>} 
+                                        {this.state.Vida != 0 ? <button href="#" onClick={() => this.bajar_stadisticas("Vida")}>-</button>: null}
+                                      
                                </Row>
                                     <Row>
                                         Fuerza:   {this.state.Monstruo[0].Dany }  
-                                        {this.state.Monstruo[0].Punts_Actius ==  0 ? null :<button href="#" 
-                                        onClick={() => this.subir_daño(this.state.Monstruo[0].Dany,this.state.Monstruo[0].idMonstre,this.state.Monstruo[0].Punts_Actius)}>+</button>}
+                                        {this.state.Monstruo[0].Punts_Actius ==  0 ? null :
+                                        <button href="#"  onClick={() => this.subir_stadisticas("Fuerza")}>+</button>}
+                                         {this.state.Fuerza != 0 ? <button href="#" onClick={() => this.bajar_stadisticas("Fuerza")}>-</button>: null}
                                </Row>
                                     <Row>
                                         Armadura:  {this.state.Monstruo[0].Armadura }
-                                        {this.state.Monstruo[0].Punts_Actius ==  0 ? null :<img className="subnivel" src={subirnivel}/>}
+                                        {this.state.Monstruo[0].Punts_Actius ==  0 ? null :
+                                        <button href="#" onClick={() => this.subir_stadisticas("Armadura")}>+</button>}
+                                        {this.state.Armadura != 0 ? <button href="#" onClick={() => this.bajar_stadisticas("Armadura")}>-</button>: null}
                                </Row>
                                     <Row>
                                         Esquiva:  {this.state.Monstruo[0].Esquiva } 
-                                        {this.state.Monstruo[0].Punts_Actius ==  0 ? null :<img className="subnivel"  src={subirnivel}/>}
+                                        {this.state.Monstruo[0].Punts_Actius ==  0 ? null :
+                                        <button href="#" onClick={() => this.subir_stadisticas("Esquiva")}>+</button>}
+                                      {this.state.Esquiva != 0 ? <button href="#" onClick={() => this.bajar_stadisticas("Esquiva")}>-</button>: null}
                                </Row>
                                 </Container>
                                 <Container className="descripcion_stats">
@@ -125,10 +239,10 @@ class Inventario extends React.Component{
                                 <Row>
                                  0 
                                </Row>
-                             {this.state.Monstruo[0].Punts_Actius ==  0 ? null :
+                             {this.state.puntos_sin_confirmar ==  0 ? null :
                               <Row id="ventana_confirmacion">
                                  {this.state.puntos_sin_confirmar} puntos sin confirmar
-                                    <button id="boton_confirmar">Confirmar</button>
+                                    <button onClick={this.boton_confirmar} id="boton_confirmar">Confirmar</button>
                                </Row>
                                  }
                                 </Container>        
@@ -138,7 +252,7 @@ class Inventario extends React.Component{
                             <div id="nivel_puntos">
                                 <Container>
                                     <Row>
-                                        Nivel:  {this.state.nivel }   
+                                        Nivel:  {this.state.nivel}   
                                 </Row>
                                     <Row>
                                         Puntos: {this.state.Monstruo[0].Punts_Actius }   
