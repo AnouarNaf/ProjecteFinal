@@ -38,11 +38,9 @@ function Perfil() {
 
     return (
         <div id="todo">
-             <div class="clouds"></div>
-                <div class="fogContainer">
-                    <div class="fog">
-
-                        
+             <div className="clouds"></div>
+                <div className="fogContainer">
+                    <div className="fog">  
                     </div>
         <div id="containerlog" className="perfil" > 
             <Header />

@@ -11,16 +11,16 @@ export default class Menu extends React.Component {
             <div id="submenu">
                 <div id="boton_menu">
                     <b className="boton">
-                        <Link to="/Perfil"><img src={boton_perfil}/></Link>
+                        <Link to="/Perfil"><img src={boton_perfil} alt="Boton Perfil"/></Link>
                     </b>
                     <b className="boton">
-                        <Link to="/Pvp"><img src={boton_pvp}/></Link>
+                        <Link to="/Pvp"><img src={boton_pvp} alt="Boton PvP"/></Link>
                     </b>
                     <b className="boton">
-                        <Link to="/Entrenamiento"><img src={boton_ent}/></Link>
+                        <Link to="/Entrenamiento"><img src={boton_ent} alt="Boton Entrenamiento"/></Link>
                     </b>
                     <b className="boton">
-                        <Link to="/Friends"><img src={boton_amigos}/></Link>
+                        <Link to="/Friends"><img src={boton_amigos} alt="Boton Friends"/></Link>
                     </b>
                 </div>
             </div>)

@@ -45,9 +45,6 @@ class Inventario extends React.Component{
             <div id="Stats" >
                     <Container>
                         <Row>
-                           
-                    </Row>
-                        <Row>
                         <b id="nombre_bicho">{this.state.Monstruo[0].Nom } </b>
                     </Row>
                         <Row>
@@ -60,19 +57,19 @@ class Inventario extends React.Component{
                                </Row>
                                     <Row>
                                        vida: {this.state.Monstruo[0].Vida }  
-                                       {this.state.Monstruo[0].Punts_Actius ==  0 ? null :<img className="subnivel" src={subirnivel}/>}
+                                       {this.state.Monstruo[0].Punts_Actius ===  0 ? null :<img className="subnivel" src={subirnivel} alt="botó pujar vida"/>}
                                </Row>
                                     <Row>
-                                        Fuerza:   {this.state.Monstruo[0].Dany }  
-                                        {this.state.Monstruo[0].Punts_Actius ==  0 ? null :<img className="subnivel" src={subirnivel}/>}
+                                        Dany:   {this.state.Monstruo[0].Dany }  
+                                        {this.state.Monstruo[0].Punts_Actius ===  0 ? null :<img className="subnivel" src={subirnivel} alt="botó pujar fuerza"/>}
                                </Row>
                                     <Row>
                                         Armadura:  {this.state.Monstruo[0].Armadura }
-                                        {this.state.Monstruo[0].Punts_Actius ==  0 ? null :<img className="subnivel" src={subirnivel}/>}
+                                        {this.state.Monstruo[0].Punts_Actius ===  0 ? null :<img className="subnivel" src={subirnivel} alt="botó pujar armadura"/>}
                                </Row>
                                     <Row>
                                         Esquiva:  {this.state.Monstruo[0].Esquiva } 
-                                        {this.state.Monstruo[0].Punts_Actius ==  0 ? null :<img className="subnivel" src={subirnivel}/>}
+                                        {this.state.Monstruo[0].Punts_Actius ===  0 ? null :<img className="subnivel" src={subirnivel} alt="botó pujar esquiva"/>}
                                </Row>
                                 </Container>
                                 <Container className="descripcion_stats">

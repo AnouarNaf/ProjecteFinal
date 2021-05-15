@@ -167,7 +167,7 @@ label{
   width: max-content;
   height: min-content;
 }
-#inptxt {
+.inptxt {
   width: 8vw;
   height: 2.5vh;
   vertical-align: top;
