@@ -84,9 +84,9 @@ function Login() {
                         <div id="login" className="background_Formularis">
                             <div id="log_title" className="row"><h3>Log In</h3></div>
                             <div className="row divsLabels"><label>User</label></div>
-                            <div className="row input"><input id="inptxt" onChange={(e) => { setusuario(e.target.value); }} type="text" placeholde="data" name="user" /></div>
+                            <div className="row input"><input className="inptxt" onChange={(e) => { setusuario(e.target.value); }} type="text" placeholde="data" name="user" /></div>
                             <div className="row divsLabels"><label>Password</label></div>
-                            <div className="row input"><input id="inptxt" onChange={(e) => { setcontraseña(e.target.value); }} type="password" name="pass" /><br/></div>
+                            <div className="row input"><input className="inptxt" onChange={(e) => { setcontraseña(e.target.value); }} type="password" name="pass" /><br/></div>
                             <img onClick={login} id="botonlog" className="botonEnter" src={boton} alt="" />
                         </div>
                     </div>
@@ -97,11 +97,11 @@ function Login() {
                         <div id="Register" className="background_Formularis">
                             <div id="log_title" className="row"><h3>Register</h3></div>
                             <div className="row divsLabels"><label>User</label></div>
-                            <div className="row input"><input id="inptxt" onChange={(e) => { setusuarioreg(e.target.value); }} type="text" placeholde="data" name="user" /></div>
+                            <div className="row input"><input className="inptxt" onChange={(e) => { setusuarioreg(e.target.value); }} type="text" placeholde="data" name="user" /></div>
                             <div className="row divsLabels"><label >Password</label></div>
-                            <div className="row input"><input id="inptxt" onChange={(e) => { setcontraseñareg(e.target.value); }} type="password" name="pass" /><br></br></div>
+                            <div className="row input"><input className="inptxt" onChange={(e) => { setcontraseñareg(e.target.value); }} type="password" name="pass" /><br></br></div>
                             <div className="row divsLabels"><label>Gmail</label></div>
-                            <div className="row input"><input id="inptxt" onChange={(e) => { setgmailreg(e.target.value); }} type="text" name="pass" /><br></br></div>
+                            <div className="row input"><input className="inptxt" onChange={(e) => { setgmailreg(e.target.value); }} type="text" name="pass" /><br></br></div>
                         </div>
                     </div>
                     <img id="cadena_2_2" src={cadenas2} alt="" />
