@@ -337,7 +337,7 @@ body {
   .input{
     height: 5vh;
   }
-  #inptxt{
+  .inptxt{
     height: 0.9vh;
     font-size: 1.2vh;
   }
@@ -352,7 +352,7 @@ body {
   #tit_login{
     width: 70vw;
   }
-  #inptxt {
+  .inptxt {
     width: 30vw;
     height: 2vh;
     font-size: 2.2vh;

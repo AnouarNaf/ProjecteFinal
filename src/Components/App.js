@@ -22,7 +22,7 @@ function App() {
                     <PrivateRoute exact path="/Entrenamiento" component={ Entrenamiento }/>
                     <PrivateRoute exact path="/Pvp" component={ Perfil }/>
                     <PrivateRoute exact path="/Friends" component={ Perfil }/>
-                    <PrivateRoute exact path="/Settings" component={ Settings }/>
+                    <PrivateRoute exact path="/Opcions" component={ Settings }/>
                     <Redirect to="/login"/>
                 </Switch>
             </div>

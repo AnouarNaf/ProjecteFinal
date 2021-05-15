@@ -14,7 +14,7 @@ export default class Header extends react.Component {
                 <div id="texto_header">
                     <Link to="/Pvp"><b id="usu_header">{this.usuario}</b> </Link>                  
                     <Link to="/login" className="LinkLog"><AiOutlineLogout className="LogoutButton" onClick={this.Logout}/></Link>
-                    <Link to="/Settings" className="LinkLog"><AiFillSetting className="LogoutButton"/></Link>
+                    <Link to="/Opcions" className="LinkLog"><AiFillSetting className="LogoutButton"/></Link>
                 </div>
             </div>
         )

@@ -1,3 +1,8 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url("../Fonts/DeterminationMonoWebRegular-Z5oq.ttf");
+}
+
 #settingsDiv {
   margin: auto;
   text-align: center;
@@ -7,17 +12,21 @@
   padding-left: 7%;
   padding-right: 7%;
   color: white;
+  font-family: myFirstFont;
 }
 #settingsDiv :is(p) {
   text-align: left;
   margin-top: 5%;
+}
+#settingsDiv h1{
+  font-size: 3.5em;
 }
 .monstresDataGrid{
     margin-top: 2%;
     border:1px solid #A6A6A6;
 }
 .monstresDataGrid legend{
-    font-size:1.4em;
+    font-size:2em;
 }
 .monstresDataGrid :is(table){
     width: 100%;
@@ -32,10 +41,10 @@
 
 #canviarCont{
     cursor:pointer;
-    display: inline-block;
+    display: inline-block;    
 }
 #canviarCont:hover{
-    opacity: 70%;
+    color:#1D2C29;
 }
 
 .button {
@@ -55,6 +64,10 @@
     border-radius: 10px;
     bottom: 0;
   }
+  .buttonCancel:hover {
+    padding: 12px 17px;
+    background-color: #ad2020;
+  }
 
   .buttonAccept {
     background-color: #04aa6d2a; 
@@ -63,9 +76,9 @@
     border-radius: 10px;
     bottom: 0;
   }
-  
-  .buttonCancel:hover {
-    color: white;
+  .buttonAccept:hover {
+    padding: 12px 17px;
+    background-color: #388a5b;
   }
 
   .formularioChangePass{
@@ -75,9 +88,10 @@
     text-align: left;
   }
   .formularioChangePass h2{
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 40px;
+    padding-bottom: 5px;
     text-align: center;
+    font-size: 1.4em;
   }
 
   #posicionBotonCancel{
@@ -106,6 +120,7 @@
     right: 80px;
     bottom:0;
     position: absolute;
+    font-family: myFirstFont;
   }
   .botonesPeques{
     padding: 1px 3px;
@@ -123,16 +138,24 @@
     bottom: -22%;
     right: 40%;
   }
+  .BotonAcceptar:hover{
+    padding: 2px 4px;
+    background-color: #388a5b;    
+  }
   .BotonCancelar{
     background-color: #8C3737; 
     bottom: -22%;
     right: 33%;
   }
+  .BotonCancelar:hover{    
+    padding: 2px 4px;
+    background-color: #ad2020;
+  }
   #inputUsuario{
     right: 50%;
-    text-align: center;
+    text-align: left;
   }
   #inputCorreu{
     right: 50%;
-    text-align: center;
+    text-align: left;
   }
