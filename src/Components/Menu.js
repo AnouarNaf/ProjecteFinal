@@ -4,6 +4,7 @@ import boton_perfil from '../imgs/Perfil/inventario/boton_perfil.png';
 import boton_pvp from '../imgs/Perfil/inventario/boton_pvp.png';
 import boton_ent from '../imgs/Perfil/inventario/boton_entrenamiento.png';
 import boton_amigos from '../imgs/Perfil/inventario/boton_amigos.png';
+import '../Styles/Menu.css';
 
 export default class Menu extends React.Component {
     render() {
@@ -11,16 +12,16 @@ export default class Menu extends React.Component {
             <div id="submenu">
                 <div id="boton_menu">
                     <b className="boton">
-                        <Link to="/Perfil"><img src={boton_perfil} alt="Boton Perfil"/></Link>
+                        <Link id="links" to="/Perfil"><img src={boton_perfil}/></Link>
                     </b>
                     <b className="boton">
-                        <Link to="/Pvp"><img src={boton_pvp} alt="Boton PvP"/></Link>
+                        <Link id="links" to="/Pvp"><img src={boton_pvp}/></Link>
                     </b>
                     <b className="boton">
-                        <Link to="/Entrenamiento"><img src={boton_ent} alt="Boton Entrenamiento"/></Link>
+                        <Link id="links" to="/Entrenamiento"><img src={boton_ent}/></Link>
                     </b>
                     <b className="boton">
-                        <Link to="/Friends"><img src={boton_amigos} alt="Boton Friends"/></Link>
+                        <Link id="links" to="/Friends"><img src={boton_amigos}/></Link>
                     </b>
                 </div>
             </div>)
