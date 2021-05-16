@@ -102,7 +102,10 @@
   #posicionBotonAccept{
     bottom: 20px;
     right: 100px;
-    position: absolute;
+    position: absolute;    
+  }
+  .fuente{
+    font-family: myFirstFont;
   }
   .inputs{
     margin:auto;
@@ -158,4 +161,63 @@
   #inputCorreu{
     right: 50%;
     text-align: left;
+  }
+  .formulario{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    opacity: 80%;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .formularioCambiar{
+    position: absolute;
+    width: 25%;
+    height: 25vh;
+    z-index: 30;
+    opacity: 100%;
+    color:white;
+  }
+  .divContenidoFormulario{
+    position: relative;
+    width: 88%;
+    height: 82%;
+    opacity: 200%;
+    z-index: 50;
+    margin:5% 5% 6% 6%;
+  }
+  .alignContent{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    font-family: myFirstFont;
+  }
+  .posicionButtonAcceptConfirmar{
+    bottom: 0;
+    right: 32%;
+    position: absolute;
+  }
+  .posicionButtonCancelConfirmar{
+    bottom: 0;
+    right: 0;
+    position: absolute;
+  }
+  #PasswordFormulario{
+    right: 20%;
+  }
+
+  .divContenidoFormulario .Container{
+    margin-top: 8%;
+  }
+  .divContenidoFormulario p:nth-of-type(2){
+    text-align: center;    
+  }
+  .formularioCambiar button{
+    font-family: myFirstFont;
   }

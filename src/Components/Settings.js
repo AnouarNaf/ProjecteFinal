@@ -14,15 +14,20 @@ export default class Settings extends react.Component {
             passR: null,
             usuari: "",
             correu: "",
-            estadoBotonesUsuario: false
+            estadoBotonesUsuario: false,
+            formularioCambiar: false,
+            formularioPassword: "",
+            formularioUsuario: false,
+            formularioCorreo: false
         };
         this.changeStat = this.changeStat.bind(this);
         this.changePassword = this.changePassword.bind(this);
-        this.changeUsuari = this.changeUsuari.bind(this);
+        this.comprovarUsuari = this.comprovarUsuari.bind(this);
         this.cancelUsuari = this.cancelUsuari.bind(this);
         this.cancelCorreu = this.cancelCorreu.bind(this);
+        this.statusChangeCorreo = this.statusChangeCorreo.bind(this);
     }
-    usuario = JSON.parse(sessionStorage.getItem("Usuari")).usuari;
+    usuario = JSON.parse(sessionStorage.getItem("Usuari")).usuari
     async componentDidMount() {
         const res = await Axios.get(`http://localhost:3001/api/GetSettingsUsuari/${this.usuario}`);
         this.setState({ usuari: res.data[0].Usuari, correu: res.data[0].correu, data: res.data, stat: true });
@@ -44,28 +49,63 @@ export default class Settings extends react.Component {
             alert("contrasenya Incorrecta");
         }
     }
-    async changeUsuari(newuser) {
+    async comprovarUsuari(newuser) {
         const res = await Axios.post("http://localhost:3001/api/ComprobarUsuario", { usuario: newuser });
         if (res.data.mensaje === "false") {
+            if (!this.state.formularioCambiar) {
+                this.setState({
+                    formularioCambiar: true,
+                    mensajeFormulario: "Canviar nom d'usuari de " + JSON.parse(sessionStorage.getItem("Usuari")).usuari + " a: ",
+                    mensajeFormulario2: newuser,
+                    formularioUsuario: true
+                });
+            }
+        } else {
+            alert("Aquest usuari ja existeix");
+        }
+    }
+    async changeUsuari(pass, newuser) {
+        const res = await Axios.post("http://localhost:3001/api/validarUsuario", { usuario: JSON.parse(sessionStorage.getItem("Usuari")).usuari, contraseña: pass });
+        if (res.data.mensaje === "True") {
             Axios.post("http://localhost:3001/changeUsuari", { usuari: JSON.parse(sessionStorage.getItem("Usuari")).usuari, newUsuari: newuser }).then((res) => alert(res.data.mensaje));
             sessionStorage.setItem("Usuari", JSON.stringify({
                 usuari: newuser,
                 logged: true
             }));
-            this.setState({ usuari: newuser });
-        } else {
-            alert("Aquest usuari ja existeix");
+            this.setState({ usuari: newuser, formularioCambiar: false, formularioCorreo:false, formularioUsuario:false});
+        }
+        else {
+            alert(res.data.mensaje);
         }
     }
     cancelUsuari() {
         this.setState({ usuari: JSON.parse(sessionStorage.getItem("Usuari")).usuari });
     }
+    async changeCorreu(pass, newCorreu) {
+        const res = await Axios.post("http://localhost:3001/api/validarUsuario", { usuario: JSON.parse(sessionStorage.getItem("Usuari")).usuari, contraseña: pass });
+        if (res.data.mensaje === "True") {
+            Axios.post("http://localhost:3001/changeCorreu", { usuari: JSON.parse(sessionStorage.getItem("Usuari")).usuari, correu: newCorreu }).then((res) => alert(res.data.mensaje));
+            this.setState({formularioCambiar: false, formularioCorreo:false, formularioUsuario:false});            
+        }
+        else {
+            alert(res.data.mensaje);
+        }
+    }
     async cancelCorreu() {
         const res = await Axios.get(`http://localhost:3001/api/GetCorreuUsuari/${JSON.parse(sessionStorage.getItem("Usuari")).usuari}`);
         this.setState({ correu: res.data[0].correu });
     }
-    async changeCorreu(newCorreu) {
-        Axios.post("http://localhost:3001/changeCorreu", { usuari: JSON.parse(sessionStorage.getItem("Usuari")).usuari, correu: newCorreu }).then((res) => alert(res.data.mensaje));
+    async statusChangeCorreo() {
+        const res = await Axios.get(`http://localhost:3001/api/GetCorreuUsuari/${JSON.parse(sessionStorage.getItem("Usuari")).usuari}`);
+        this.setState({
+            formularioCambiar: true,
+            mensajeFormulario: "Modificar correu (" + res.data[0].correu +") a:",
+            mensajeFormulario2: this.state.correu,
+            formularioCorreo: true
+        });
+    }
+    cambiarEstadoFormulario(x) {
+        this.setState({ formularioCambiar: x, formularioUsuario: false, formularioCorreo: false });
     }
     render() {
         return (
@@ -74,21 +114,47 @@ export default class Settings extends react.Component {
                 <div className="fogContainer">
                     <div className="fog">
                     </div>
+                    {this.state.formularioCambiar ?
+                        <div className="alignContent">
+                            <div className="formulario" onClick={() => this.cambiarEstadoFormulario(false)}>
+                            </div>
+                            <div className="background_Formularis formularioCambiar">
+                                <div className="divContenidoFormulario">
+                                    <p>{this.state.mensajeFormulario}</p>
+                                    <p>{this.state.mensajeFormulario2}</p>
+                                    <div className="Container">
+                                        <p>Contrasenya</p>
+                                        <input type="password" id="PasswordFormulario" value={this.formularioPassword} onChange={(e) => { this.setState({ formularioPassword: e.target.value }) }}></input>
+                                    </div>
+                                    {this.state.formularioUsuario ?
+                                        <div className="posicionButtonAcceptConfirmar">
+                                            <button className="button buttonAccept" onClick={() => this.changeUsuari(this.state.formularioPassword, this.state.usuari)}>Confirmar</button>
+                                        </div> : null}
+                                    {this.state.formularioCorreo ?
+                                        <div className="posicionButtonAcceptConfirmar">
+                                            <button className="button buttonAccept" onClick={() => this.changeCorreu(this.state.formularioPassword, this.state.correu)}>Confirmar</button>
+                                        </div> : null}
+                                    <div className="posicionButtonCancelConfirmar">
+                                        <button className="button buttonCancel" onClick={() => this.cambiarEstadoFormulario(false)}>Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> : null}
                     <div id="containerlog" className="perfil" >
-                        {<Header />}
+                        <Header />
                         <Menu />
                         <div id="settingsDiv" className="background_Formularis">
                             <h1>OPCIONS</h1>
                             <div className="Container">
                                 <p>Usuari: <input id="inputUsuario" type="text" value={this.state.usuari} onChange={(e) => { this.setState({ usuari: e.target.value }) }}></input></p>
                                 <div>
-                                    <div className="botonesPeques BotonAcceptar" onClick={() => this.changeUsuari(this.state.usuari)}><AiOutlineCheck /></div>
+                                    <div className="botonesPeques BotonAcceptar" onClick={() => this.comprovarUsuari(this.state.usuari)}><AiOutlineCheck /></div>
                                     <div className="botonesPeques BotonCancelar" onClick={this.cancelUsuari}><AiOutlineClose /></div>
                                 </div>
                             </div>
                             <div className="Container">
                                 <p>Correu: <input id="inputCorreu" type="text" value={this.state.correu} onChange={(e) => { this.setState({ correu: e.target.value }) }}></input></p>
-                                <div className="botonesPeques BotonAcceptar" onClick={() => this.changeCorreu(this.state.correu)}><AiOutlineCheck /></div>
+                                <div className="botonesPeques BotonAcceptar" onClick={this.statusChangeCorreo}><AiOutlineCheck /></div>
                                 <div className="botonesPeques BotonCancelar" onClick={this.cancelCorreu}><AiOutlineClose /></div>
                             </div>
                             {!this.state.stat ? null :
@@ -139,10 +205,10 @@ export default class Settings extends react.Component {
                                         </div>
                                     </div>
                                     <div id="posicionBotonAccept">
-                                        <button className="button buttonAccept" onClick={() => this.changePassword(this.state.password, this.state.newPass, this.state.passR)}>Confirmar</button>
+                                        <button className="button buttonAccept fuente" onClick={() => this.changePassword(this.state.password, this.state.newPass, this.state.passR)}>Confirmar</button>
                                     </div>
                                     <div id="posicionBotonCancel">
-                                        <button className="button buttonCancel" onClick={() => this.changeStat(true)}>Cancelar</button>
+                                        <button className="button buttonCancel fuente" onClick={() => this.changeStat(true)}>Cancelar</button>
                                     </div>
                                 </div>
                             }
