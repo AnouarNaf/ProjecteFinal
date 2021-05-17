@@ -3,7 +3,9 @@ import Axios from "axios";
 import '../Styles/inventario.css';
 import subirnivel from '../imgs/Perfil/inventario/subirnivel.png';
 import { Container, Row, Col } from 'react-grid-system';
+import { AiFillEdit } from "react-icons/ai";
 
+import { AiOutlineUpload } from "react-icons/ai";
 var idmonstrx="";
 var puntos_sin_confirmar=0;
 
@@ -17,7 +19,10 @@ class Inventario extends React.Component{
             Fuerza: 0,
             Vida: 0,
             Armadura: 0,
-            Esquiva: 0
+            Esquiva: 0,
+            pestaña_nombre: false,
+            nuevonombre: "Monstre",
+            value:""
         }
         this.boton_confirmar = this.boton_confirmar.bind(this);
     }
@@ -52,6 +57,7 @@ boton_confirmar(){
       }) )
 
 }
+
  subir_stadisticas(estadistica){
 
      switch(estadistica){
@@ -77,7 +83,7 @@ boton_confirmar(){
          break;
 
      }
-     
+    
     
     this.state.Monstruo[0].Punts_Actius = this.state.Monstruo[0].Punts_Actius-1;
      this.setState({
@@ -148,8 +154,37 @@ boton_confirmar(){
             imagenes: res.data.rows
             
         }))
-        
+       
     }
+    ventanacambiarnomnbre(){
+        if(this.state.pestaña_nombre == 0){
+            this.state.pestaña_nombre = 1;
+        }else{
+            this.state.pestaña_nombre  = 0;
+        }
+        this.setState({  
+            pestaña_nombre: this.state.pestaña_nombre
+        })
+        }
+    
+    handleChange=(e)=>{
+        this.setState({value:e.target.value})
+        console.log(this.state.value);
+      }
+      
+   async  cambiar(){
+         
+         this.setState({
+             nuevonombre:this.state.value})
+             console.log(this.state.nuevonombre);
+             this.state.pestaña_nombre  = 0;
+             Axios.post("http://localhost:3001/api/cambiar_nombre", 
+             { usuario: JSON.parse(sessionStorage.getItem("Usuari")).usuari, Monstre: this.state.Monstruo[0].idMonstre, nuevonombre: this.state.value}).then((res)=>this.setState({
+         
+            
+        }))
+       
+      }
     render(){
         return(
             <div className="container">
@@ -174,8 +209,23 @@ boton_confirmar(){
                         <Row>
                            
                     </Row>
+                    {this.state.pestaña_nombre ==  false ? 
+                    <div>  
+                        {this.state.Monstruo[0].Nombre_Perso ==  null ? "Monstre" : this.state.Monstruo[0].Nombre_Perso}  
+                        <AiFillEdit className="AiFillEdit" onClick={() => this.ventanacambiarnomnbre()}/> </div>:
+                     <div id="cambiar_nombre">
+                  
+                        <input type="text" value={this.state.value} onChange={this.handleChange} />
+                        <AiOutlineUpload className="AiOutlineUpload" onClick={() => this.cambiar()}/>
+                   
+                    </div>}
                         <Row>
+                        <Col>
                         <b  id="nombre_bicho">{this.state.Monstruo[0].Nom } </b>
+                        </Col>
+                        <Col>
+                        
+                        </Col>
                     </Row>
                         <Row>
                             <div id="img_prueba"> 

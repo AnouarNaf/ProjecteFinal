@@ -43,3 +43,13 @@
 #Stats{
   
 }
+#cambiar_nombre{
+    position: relative;
+    width: auto;
+    height:auto;
+    background-color: black;
+}
+#boton_nombre{
+    position: relative;
+    left: 25%;
+}
