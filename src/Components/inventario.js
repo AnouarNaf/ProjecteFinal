@@ -229,7 +229,8 @@ boton_confirmar(){
                     </Row>
                         <Row>
                             <div id="img_prueba"> 
-                                <img width="110px" height="150px" id="imgs_celdas_stats"   src= {this.state.Monstruo[0].img } alt="Monstruos"/>   </div>
+                            {this.state.Monstruo[0].img_gif ==  null ? <img width="110px" height="150px" id="imgs_celdas_stats"   src= {this.state.Monstruo[0].img } alt="Monstruos"/> 
+                            :<img width="110px" height="150px" id="imgs_celdas_stats"   src= {this.state.Monstruo[0].img_gif } alt="Monstruos"/> }  </div>
                             <div id="stats_img" >
                                 <Container>
                                     <Row id="desc">
