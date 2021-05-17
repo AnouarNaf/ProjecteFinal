@@ -45,7 +45,7 @@ export default class Settings extends react.Component {
         if (res.data.mensaje === "True") {
             if (newpass === repeatNewPass) {
                 Axios.post("http://localhost:3001/changePassword", { usuari: JSON.parse(sessionStorage.getItem("Usuari")).usuari, newPassword: newpass }).then((res) => alert(res.data.mensaje))
-                this.setState({ password: null, newPass: null, passR: null });
+                this.setState({ password: "", newPass: "", passR: "" });
             } else {
                 alert("Les contrasenyes no son iguals");
             }
@@ -165,7 +165,7 @@ export default class Settings extends react.Component {
                             </div>
                         </div> : null}
                     <div id="containerlog" className="perfil" >
-                        <Header />
+                        <Header userName={JSON.parse(sessionStorage.getItem("Usuari")).usuari}/>
                         <Menu />
                         <div id="settingsDiv" className="background_Formularis">
                             <h1>OPCIONS</h1>
@@ -223,15 +223,15 @@ export default class Settings extends react.Component {
                                     <div className="inputs">
                                         <div className="Container">
                                             <p>Contrasenya Actual</p>
-                                            <input type="password" onChange={(e) => { this.setState({ password: e.target.value }); }}></input>
+                                            <input type="password" value={this.state.password} onChange={(e) => { this.setState({ password: e.target.value }); }}></input>
                                         </div>
                                         <div className="Container">
                                             <p>Contrasenya Nova</p>
-                                            <input type="password" onChange={(e) => { this.setState({ newPass: e.target.value }); }}></input>
+                                            <input type="password" value={this.state.newPass} onChange={(e) => { this.setState({ newPass: e.target.value }); }}></input>
                                         </div>
                                         <div className="Container">
                                             <p>Repeteix Contrasenya Nova</p>
-                                            <input type="password" onChange={(e) => { this.setState({ passR: e.target.value }); }}></input>
+                                            <input type="password" value={this.state.passR} onChange={(e) => { this.setState({ passR: e.target.value }); }}></input>
                                         </div>
                                     </div>
                                     <div id="posicionBotonAccept">

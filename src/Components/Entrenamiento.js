@@ -57,7 +57,7 @@ export default class Entrenamiento extends react.Component {
     render() {
         return (
             <div className="perfil" >
-                <Header />
+                <Header userName={JSON.parse(sessionStorage.getItem("Usuari")).usuari}/>
                 <Menu />
                 <div className="container">
                     <div id="lista" >

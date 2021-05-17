@@ -43,7 +43,7 @@ function Perfil() {
                     <div className="fog">  
                     </div>
         <div id="containerlog" className="perfil" > 
-            <Header />
+            <Header userName={JSON.parse(sessionStorage.getItem("Usuari")).usuari}/>
             <Menu />
             <Inventario />
         </div>

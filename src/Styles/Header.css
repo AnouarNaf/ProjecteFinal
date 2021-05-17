@@ -17,3 +17,12 @@
     bottom:13px;
     position: relative;
 }
+
+#usu_header{
+    z-index: 5;
+    bottom:0%;
+    position: relative;
+    font-size: 150%;
+    margin-left: 5%;
+    color:white;
+  }
