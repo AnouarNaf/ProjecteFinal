@@ -18,7 +18,10 @@ export default class Settings extends react.Component {
             formularioCambiar: false,
             formularioPassword: "",
             formularioUsuario: false,
-            formularioCorreo: false
+            formularioCorreo: false,
+            usuarioCambiado: false,
+            correoCambiado: false,
+            correuActual: ""
         };
         this.changeStat = this.changeStat.bind(this);
         this.changePassword = this.changePassword.bind(this);
@@ -26,11 +29,12 @@ export default class Settings extends react.Component {
         this.cancelUsuari = this.cancelUsuari.bind(this);
         this.cancelCorreu = this.cancelCorreu.bind(this);
         this.statusChangeCorreo = this.statusChangeCorreo.bind(this);
+        this.usuarioOnChange = this.usuarioOnChange.bind(this);
     }
     usuario = JSON.parse(sessionStorage.getItem("Usuari")).usuari
     async componentDidMount() {
-        const res = await Axios.get(`http://localhost:3001/api/GetSettingsUsuari/${this.usuario}`);
-        this.setState({ usuari: res.data[0].Usuari, correu: res.data[0].correu, data: res.data, stat: true });
+        const res = await Axios.get(`http://localhost:3001/api/GetSettingsUsuari/${this.usuario}`);        
+        this.setState({ usuari: res.data[0].Usuari, correu: res.data[0].correu, data: res.data, stat: true, correuActual:res.data[0].correu});
     }
 
     changeStat(x) {
@@ -50,6 +54,12 @@ export default class Settings extends react.Component {
         }
     }
     async comprovarUsuari(newuser) {
+        const user_without_spaces = newuser.replace(/\s/g, '');
+        if (user_without_spaces.length !== newuser.length) return alert("L'usuari no pot tenir espais")
+        if (newuser.length === 0) return alert("Has d'introduir un valor de usuari")
+        if (newuser.length === 1) return alert("L'usuari ha de tenir més de un caracter")
+        if (newuser.length > 15) return alert("El maxim de caracters d'usuari es 15");
+
         const res = await Axios.post("http://localhost:3001/api/ComprobarUsuario", { usuario: newuser });
         if (res.data.mensaje === "false") {
             if (!this.state.formularioCambiar) {
@@ -72,40 +82,54 @@ export default class Settings extends react.Component {
                 usuari: newuser,
                 logged: true
             }));
-            this.setState({ usuari: newuser, formularioCambiar: false, formularioCorreo:false, formularioUsuario:false});
+            this.setState({ usuari: newuser, formularioCambiar: false, formularioCorreo: false, formularioUsuario: false, usuarioCambiado: false});
         }
         else {
             alert(res.data.mensaje);
         }
     }
     cancelUsuari() {
-        this.setState({ usuari: JSON.parse(sessionStorage.getItem("Usuari")).usuari });
+        this.setState({ usuari: JSON.parse(sessionStorage.getItem("Usuari")).usuari, usuarioCambiado: false });
     }
     async changeCorreu(pass, newCorreu) {
         const res = await Axios.post("http://localhost:3001/api/validarUsuario", { usuario: JSON.parse(sessionStorage.getItem("Usuari")).usuari, contraseña: pass });
         if (res.data.mensaje === "True") {
             Axios.post("http://localhost:3001/changeCorreu", { usuari: JSON.parse(sessionStorage.getItem("Usuari")).usuari, correu: newCorreu }).then((res) => alert(res.data.mensaje));
-            this.setState({formularioCambiar: false, formularioCorreo:false, formularioUsuario:false});            
+            this.setState({ formularioCambiar: false, formularioCorreo: false, formularioUsuario: false, correoCambiado: false, correuActual:newCorreu});
         }
         else {
             alert(res.data.mensaje);
         }
     }
     async cancelCorreu() {
-        const res = await Axios.get(`http://localhost:3001/api/GetCorreuUsuari/${JSON.parse(sessionStorage.getItem("Usuari")).usuari}`);
-        this.setState({ correu: res.data[0].correu });
+        this.setState({ correu: this.state.correuActual, correoCambiado: false});
     }
-    async statusChangeCorreo() {
-        const res = await Axios.get(`http://localhost:3001/api/GetCorreuUsuari/${JSON.parse(sessionStorage.getItem("Usuari")).usuari}`);
+    async statusChangeCorreo() {        
         this.setState({
             formularioCambiar: true,
-            mensajeFormulario: "Modificar correu (" + res.data[0].correu +") a:",
+            mensajeFormulario: "Modificar correu (" + this.state.correuActual + ") a:",
             mensajeFormulario2: this.state.correu,
             formularioCorreo: true
         });
     }
     cambiarEstadoFormulario(x) {
         this.setState({ formularioCambiar: x, formularioUsuario: false, formularioCorreo: false });
+    }
+    usuarioOnChange(e) {
+        this.setState({ usuari: e.target.value })
+        if (e.target.value === JSON.parse(sessionStorage.getItem("Usuari")).usuari) {
+            this.setState({ usuarioCambiado: false })
+        } else {
+            this.setState({ usuarioCambiado: true })
+        }
+    }
+    correoOnChange(e){
+        this.setState({ correu: e.target.value })
+        if(e.target.value === this.state.correuActual){
+            this.setState({ correoCambiado: false })
+        }else{
+            this.setState({ correoCambiado: true })
+        }
     }
     render() {
         return (
@@ -146,16 +170,22 @@ export default class Settings extends react.Component {
                         <div id="settingsDiv" className="background_Formularis">
                             <h1>OPCIONS</h1>
                             <div className="Container">
-                                <p>Usuari: <input id="inputUsuario" type="text" value={this.state.usuari} onChange={(e) => { this.setState({ usuari: e.target.value }) }}></input></p>
-                                <div>
-                                    <div className="botonesPeques BotonAcceptar" onClick={() => this.comprovarUsuari(this.state.usuari)}><AiOutlineCheck /></div>
-                                    <div className="botonesPeques BotonCancelar" onClick={this.cancelUsuari}><AiOutlineClose /></div>
-                                </div>
+                                <p>Usuari: <input id="inputUsuario" type="text" value={this.state.usuari} onChange={(e) => { this.usuarioOnChange(e) }}></input></p>
+                                {this.state.usuarioCambiado ?
+                                    <div>
+                                        <div className="botonesPeques BotonAcceptar" onClick={() => this.comprovarUsuari(this.state.usuari)}><AiOutlineCheck /></div>
+                                        <div className="botonesPeques BotonCancelar" onClick={this.cancelUsuari}><AiOutlineClose /></div>
+                                    </div>
+                                    : null}
                             </div>
                             <div className="Container">
-                                <p>Correu: <input id="inputCorreu" type="text" value={this.state.correu} onChange={(e) => { this.setState({ correu: e.target.value }) }}></input></p>
-                                <div className="botonesPeques BotonAcceptar" onClick={this.statusChangeCorreo}><AiOutlineCheck /></div>
-                                <div className="botonesPeques BotonCancelar" onClick={this.cancelCorreu}><AiOutlineClose /></div>
+                                <p>Correu: <input id="inputCorreu" type="text" value={this.state.correu} onChange={(e) => { this.correoOnChange(e) }}></input></p>
+                                {this.state.correoCambiado ?
+                                    <div>
+                                        <div className="botonesPeques BotonAcceptar" onClick={this.statusChangeCorreo}><AiOutlineCheck /></div>
+                                        <div className="botonesPeques BotonCancelar" onClick={this.cancelCorreu}><AiOutlineClose /></div>
+                                    </div>
+                                    : null}
                             </div>
                             {!this.state.stat ? null :
                                 <div className="Container"><p id="canviarCont" onClick={() => this.changeStat(false)}>Canviar contrasenya</p></div>}
