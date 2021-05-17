@@ -40,6 +40,9 @@ function Login() {
 
 
         Axios.post("http://localhost:3001/api/ComprobarUsuario", { usuario: reg_usuario }).then((res) => registro(res.data.mensaje, reg_usuario, reg_contraseña, reg_gmail))
+        setusuarioreg("");
+        setcontraseñareg("");
+        setgmailreg("");
         /*.then((res) => setDataC(res.data.mensaje)).then((res)=> alerta(res.data.mensaje))*/
     }
 
@@ -97,11 +100,11 @@ function Login() {
                         <div id="Register" className="background_Formularis">
                             <div id="log_title" className="row"><h3>Register</h3></div>
                             <div className="row divsLabels"><label>User</label></div>
-                            <div className="row input"><input className="inptxt" onChange={(e) => { setusuarioreg(e.target.value); }} type="text" placeholde="data" name="user" /></div>
+                            <div className="row input"><input className="inptxt" value={reg_usuario} onChange={(e) => { setusuarioreg(e.target.value); }} type="text" placeholde="data" name="user" /></div>
                             <div className="row divsLabels"><label >Password</label></div>
-                            <div className="row input"><input className="inptxt" onChange={(e) => { setcontraseñareg(e.target.value); }} type="password" name="pass" /><br></br></div>
+                            <div className="row input"><input className="inptxt" value={reg_contraseña} onChange={(e) => { setcontraseñareg(e.target.value); }} type="password" name="pass" /><br></br></div>
                             <div className="row divsLabels"><label>Gmail</label></div>
-                            <div className="row input"><input className="inptxt" onChange={(e) => { setgmailreg(e.target.value); }} type="text" name="pass" /><br></br></div>
+                            <div className="row input"><input className="inptxt" value={reg_gmail} onChange={(e) => { setgmailreg(e.target.value); }} type="text" name="pass" /><br></br></div>
                         </div>
                     </div>
                     <img id="cadena_2_2" src={cadenas2} alt="" />

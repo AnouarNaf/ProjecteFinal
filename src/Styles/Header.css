@@ -1,6 +1,6 @@
 .LogoutButton{
     float:right;
-    height: 25px;
+    height: 3.2vh;
     width: auto;
     margin-right: 1vw;
 }
@@ -17,3 +17,21 @@
     bottom:13px;
     position: relative;
 }
+
+.header{
+    background-image: url("../imgs/Perfil/inventario/header.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color:white;
+    height: 12%;
+    overflow: hidden;
+  }
+
+  #usu_header{
+    z-index: 5;
+    bottom:0%;
+    position: relative;
+    font-size: 4vh;
+    margin-left: 5%;
+    color:white;
+  }

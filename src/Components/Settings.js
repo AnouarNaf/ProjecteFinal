@@ -33,8 +33,8 @@ export default class Settings extends react.Component {
     }
     usuario = JSON.parse(sessionStorage.getItem("Usuari")).usuari
     async componentDidMount() {
-        const res = await Axios.get(`http://localhost:3001/api/GetSettingsUsuari/${this.usuario}`);        
-        this.setState({ usuari: res.data[0].Usuari, correu: res.data[0].correu, data: res.data, stat: true, correuActual:res.data[0].correu});
+        const res = await Axios.get(`http://localhost:3001/api/GetSettingsUsuari/${this.usuario}`);
+        this.setState({ usuari: res.data[0].Usuari, correu: res.data[0].correu, data: res.data, stat: true, correuActual: res.data[0].correu });
     }
 
     changeStat(x) {
@@ -45,7 +45,7 @@ export default class Settings extends react.Component {
         if (res.data.mensaje === "True") {
             if (newpass === repeatNewPass) {
                 Axios.post("http://localhost:3001/changePassword", { usuari: JSON.parse(sessionStorage.getItem("Usuari")).usuari, newPassword: newpass }).then((res) => alert(res.data.mensaje))
-                this.setState({ password: null, newPass: null, passR: null });
+                this.setState({ password: "", newPass: "", passR: "" });
             } else {
                 alert("Les contrasenyes no son iguals");
             }
@@ -82,7 +82,7 @@ export default class Settings extends react.Component {
                 usuari: newuser,
                 logged: true
             }));
-            this.setState({ usuari: newuser, formularioCambiar: false, formularioCorreo: false, formularioUsuario: false, usuarioCambiado: false});
+            this.setState({ usuari: newuser, formularioCambiar: false, formularioCorreo: false, formularioUsuario: false, usuarioCambiado: false });
         }
         else {
             alert(res.data.mensaje);
@@ -95,16 +95,16 @@ export default class Settings extends react.Component {
         const res = await Axios.post("http://localhost:3001/api/validarUsuario", { usuario: JSON.parse(sessionStorage.getItem("Usuari")).usuari, contraseña: pass });
         if (res.data.mensaje === "True") {
             Axios.post("http://localhost:3001/changeCorreu", { usuari: JSON.parse(sessionStorage.getItem("Usuari")).usuari, correu: newCorreu }).then((res) => alert(res.data.mensaje));
-            this.setState({ formularioCambiar: false, formularioCorreo: false, formularioUsuario: false, correoCambiado: false, correuActual:newCorreu});
+            this.setState({ formularioCambiar: false, formularioCorreo: false, formularioUsuario: false, correoCambiado: false, correuActual: newCorreu });
         }
         else {
             alert(res.data.mensaje);
         }
     }
     async cancelCorreu() {
-        this.setState({ correu: this.state.correuActual, correoCambiado: false});
+        this.setState({ correu: this.state.correuActual, correoCambiado: false });
     }
-    async statusChangeCorreo() {        
+    async statusChangeCorreo() {
         this.setState({
             formularioCambiar: true,
             mensajeFormulario: "Modificar correu (" + this.state.correuActual + ") a:",
@@ -123,11 +123,11 @@ export default class Settings extends react.Component {
             this.setState({ usuarioCambiado: true })
         }
     }
-    correoOnChange(e){
+    correoOnChange(e) {
         this.setState({ correu: e.target.value })
-        if(e.target.value === this.state.correuActual){
+        if (e.target.value === this.state.correuActual) {
             this.setState({ correoCambiado: false })
-        }else{
+        } else {
             this.setState({ correoCambiado: true })
         }
     }
@@ -164,84 +164,86 @@ export default class Settings extends react.Component {
                                 </div>
                             </div>
                         </div> : null}
-                    <div id="containerlog" className="perfil" >
-                        <Header />
-                        <Menu />
-                        <div id="settingsDiv" className="background_Formularis">
-                            <h1>OPCIONS</h1>
-                            <div className="Container">
-                                <p>Usuari: <input id="inputUsuario" type="text" value={this.state.usuari} onChange={(e) => { this.usuarioOnChange(e) }}></input></p>
-                                {this.state.usuarioCambiado ?
-                                    <div>
-                                        <div className="botonesPeques BotonAcceptar" onClick={() => this.comprovarUsuari(this.state.usuari)}><AiOutlineCheck /></div>
-                                        <div className="botonesPeques BotonCancelar" onClick={this.cancelUsuari}><AiOutlineClose /></div>
-                                    </div>
-                                    : null}
-                            </div>
-                            <div className="Container">
-                                <p>Correu: <input id="inputCorreu" type="text" value={this.state.correu} onChange={(e) => { this.correoOnChange(e) }}></input></p>
-                                {this.state.correoCambiado ?
-                                    <div>
-                                        <div className="botonesPeques BotonAcceptar" onClick={this.statusChangeCorreo}><AiOutlineCheck /></div>
-                                        <div className="botonesPeques BotonCancelar" onClick={this.cancelCorreu}><AiOutlineClose /></div>
-                                    </div>
-                                    : null}
-                            </div>
-                            {!this.state.stat ? null :
-                                <div className="Container"><p id="canviarCont" onClick={() => this.changeStat(false)}>Canviar contrasenya</p></div>}
-                            {this.state.stat ?
-                                <fieldset className="monstresDataGrid">
-                                    <legend><b>MONSTRES</b></legend>
-                                    <table >
-                                        <tbody>
-                                            <tr>
-                                                <th>Monstre</th>
-                                                <th>Nivell</th>
-                                                <th>Dany</th>
-                                                <th>Vida</th>
-                                                <th>Armadura</th>
-                                                <th>Esquiva</th>
-                                                <th>Punts</th>
-                                            </tr>
-                                            {this.state.data.map((x, i) => {
-                                                return (
-                                                    <tr key={i}>
-                                                        <td>{x.NomMonstre}</td>
-                                                        <td>{Math.trunc(x.Punts_Gastats / 5)}</td>
-                                                        <td>{x.Dany}</td>
-                                                        <td>{x.Vida}</td>
-                                                        <td>{x.Armadura}</td>
-                                                        <td>{x.Esquiva}</td>
-                                                        <td>{x.Punts_Actius}</td>
-                                                    </tr>)
-                                            })}
-                                        </tbody>
-                                    </table>
-                                </fieldset> :
-                                <div className="formularioChangePass">
-                                    <h2>Canviar Contrasenya</h2>
-                                    <div className="inputs">
-                                        <div className="Container">
-                                            <p>Contrasenya Actual</p>
-                                            <input type="password" onChange={(e) => { this.setState({ password: e.target.value }); }}></input>
+                    <div className="alignContent">
+                        <div id="containerlog" className="prueba" >
+                            <Header userName={JSON.parse(sessionStorage.getItem("Usuari")).usuari} />
+                            <Menu />
+                            <div id="settingsDiv" className="background_Formularis">
+                                <h1>OPCIONS</h1>
+                                <div className="Container">
+                                    <p>Usuari: <input id="inputUsuario" type="text" value={this.state.usuari} onChange={(e) => { this.usuarioOnChange(e) }}></input></p>
+                                    {this.state.usuarioCambiado ?
+                                        <div>
+                                            <div className="botonesPeques BotonAcceptar" onClick={() => this.comprovarUsuari(this.state.usuari)}><AiOutlineCheck /></div>
+                                            <div className="botonesPeques BotonCancelar" onClick={this.cancelUsuari}><AiOutlineClose /></div>
                                         </div>
-                                        <div className="Container">
-                                            <p>Contrasenya Nova</p>
-                                            <input type="password" onChange={(e) => { this.setState({ newPass: e.target.value }); }}></input>
-                                        </div>
-                                        <div className="Container">
-                                            <p>Repeteix Contrasenya Nova</p>
-                                            <input type="password" onChange={(e) => { this.setState({ passR: e.target.value }); }}></input>
-                                        </div>
-                                    </div>
-                                    <div id="posicionBotonAccept">
-                                        <button className="button buttonAccept fuente" onClick={() => this.changePassword(this.state.password, this.state.newPass, this.state.passR)}>Confirmar</button>
-                                    </div>
-                                    <div id="posicionBotonCancel">
-                                        <button className="button buttonCancel fuente" onClick={() => this.changeStat(true)}>Cancelar</button>
-                                    </div>
+                                        : null}
                                 </div>
-                            }
+                                <div className="Container">
+                                    <p>Correu: <input id="inputCorreu" type="text" value={this.state.correu} onChange={(e) => { this.correoOnChange(e) }}></input></p>
+                                    {this.state.correoCambiado ?
+                                        <div>
+                                            <div className="botonesPeques BotonAcceptar" onClick={this.statusChangeCorreo}><AiOutlineCheck /></div>
+                                            <div className="botonesPeques BotonCancelar" onClick={this.cancelCorreu}><AiOutlineClose /></div>
+                                        </div>
+                                        : null}
+                                </div>
+                                {!this.state.stat ? null :
+                                    <div className="Container"><p id="canviarCont" onClick={() => this.changeStat(false)}>Canviar contrasenya</p></div>}
+                                {this.state.stat ?
+                                    <fieldset className="monstresDataGrid">
+                                        <legend><b>MONSTRES</b></legend>
+                                        <table >
+                                            <tbody>
+                                                <tr>
+                                                    <th>Monstre</th>
+                                                    <th>Nivell</th>
+                                                    <th>Dany</th>
+                                                    <th>Vida</th>
+                                                    <th>Armadura</th>
+                                                    <th>Esquiva</th>
+                                                    <th>Punts</th>
+                                                </tr>
+                                                {this.state.data.map((x, i) => {
+                                                    return (
+                                                        <tr key={i}>
+                                                            <td>{x.NomMonstre}</td>
+                                                            <td>{Math.trunc(x.Punts_Gastats / 5)}</td>
+                                                            <td>{x.Dany}</td>
+                                                            <td>{x.Vida}</td>
+                                                            <td>{x.Armadura}</td>
+                                                            <td>{x.Esquiva}</td>
+                                                            <td>{x.Punts_Actius}</td>
+                                                        </tr>)
+                                                })}
+                                            </tbody>
+                                        </table>
+                                    </fieldset> :
+                                    <div className="formularioChangePass">
+                                        <h2>Canviar Contrasenya</h2>
+                                        <div className="inputs">
+                                            <div className="Container">
+                                                <p>Contrasenya Actual</p>
+                                                <input type="password" value={this.state.password} onChange={(e) => { this.setState({ password: e.target.value }); }}></input>
+                                            </div>
+                                            <div className="Container">
+                                                <p>Contrasenya Nova</p>
+                                                <input type="password" value={this.state.newPass} onChange={(e) => { this.setState({ newPass: e.target.value }); }}></input>
+                                            </div>
+                                            <div className="Container">
+                                                <p>Repeteix Contrasenya Nova</p>
+                                                <input type="password" value={this.state.passR} onChange={(e) => { this.setState({ passR: e.target.value }); }}></input>
+                                            </div>
+                                        </div>
+                                        <div id="posicionBotonAccept">
+                                            <button className="button buttonAccept fuente" onClick={() => this.changePassword(this.state.password, this.state.newPass, this.state.passR)}>Confirmar</button>
+                                        </div>
+                                        <div id="posicionBotonCancel">
+                                            <button className="button buttonCancel fuente" onClick={() => this.changeStat(true)}>Cancelar</button>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>

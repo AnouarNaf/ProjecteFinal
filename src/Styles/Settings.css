@@ -196,7 +196,7 @@
     align-items: center;
     height: 100vh;
     width: 100%;
-    font-family: myFirstFont;
+    /* font-family: myFirstFont; */
   }
   .posicionButtonAcceptConfirmar{
     bottom: 0;
@@ -220,4 +220,11 @@
   }
   .formularioCambiar button{
     font-family: myFirstFont;
+  }
+
+  .prueba{
+    width:45%;
+    height: 100%;
+    background-image: url("../imgs/fondo.jpg");
+    left: 0;
   }

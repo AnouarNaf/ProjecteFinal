@@ -5,46 +5,6 @@
 }
 
 /*----------------------------------------------------*/
-
-#usu_header,#gmail_header,#monster_header{
-  margin-left: 0%;
-}
-#usu_header{
-  z-index: 5;
-  bottom:0%;
-  position: relative;
-  font-size: 150%;
-  margin-left: 5%;
-}
-/*----------------------------------------------------*/
-#submenu{
-  margin-top: 10%;
-  left:25%;
-  position:relative;
-  background-image: url("../imgs/Perfil/inventario/barra_submenu.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 51%;
-  height: 4.1%;
-
-  margin-bottom: 2%;
-}
-#boton_menu{
-  margin-top: 2%;
-  margin-right: 2%;
-  margin-left: 2%;
-}
-.boton{
-  margin-left: 4%;
-
-  position: relative;
-  top:9px;
-}
-.header{
-  background-image: url("../imgs/Perfil/inventario/header.png");
-  color:white;
-  height: 7%;
-}
 #texto_header{
   position: relative;
   top:25%;
