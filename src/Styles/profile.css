@@ -6,16 +6,6 @@
 
 /*----------------------------------------------------*/
 
-#usu_header,#gmail_header,#monster_header{
-  margin-left: 0%;
-}
-#usu_header{
-  z-index: 5;
-  bottom:0%;
-  position: relative;
-  font-size: 150%;
-  margin-left: 5%;
-}
 /*----------------------------------------------------*/
 #submenu{
   margin-top: 10%;

@@ -21,6 +21,10 @@
     margin-left: 10%;
     position: relative;
 }
+#imgs_celdas:hover {
+    opacity: 60%;
+    cursor: pointer;
+}
 #ventana_confirmacion{
     display:none;
     position: relative;

@@ -1,0 +1,223 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url("../Fonts/DeterminationMonoWebRegular-Z5oq.ttf");
+}
+
+#settingsDiv {
+  margin: auto;
+  text-align: center;
+  height: 45%;
+  width: 65%;
+  padding-top: 3%;
+  padding-left: 7%;
+  padding-right: 7%;
+  color: white;
+  font-family: myFirstFont;
+}
+#settingsDiv :is(p) {
+  text-align: left;
+  margin-top: 5%;
+}
+#settingsDiv h1{
+  font-size: 3.5em;
+}
+.monstresDataGrid{
+    margin-top: 2%;
+    border:1px solid #A6A6A6;
+}
+.monstresDataGrid legend{
+    font-size:2em;
+}
+.monstresDataGrid :is(table){
+    width: 100%;
+    margin: auto;
+    margin-bottom:5%;
+    margin-top: 2%;
+    
+}
+.monstresDataGrid tr:first-of-type th{
+    padding-bottom:1em;
+}
+
+#canviarCont{
+    cursor:pointer;
+    display: inline-block;    
+}
+#canviarCont:hover{
+    color:#1D2C29;
+}
+
+.button {
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  .buttonCancel {
+    background-color: #8C3737; 
+    color: #FFFFFF; 
+    border: 4px solid #C7ACA6;
+    border-radius: 10px;
+    bottom: 0;
+  }
+  .buttonCancel:hover {
+    padding: 12px 17px;
+    background-color: #ad2020;
+  }
+
+  .buttonAccept {
+    background-color: #04aa6d2a; 
+    color: #FFFFFF; 
+    border: 4px solid #C7ACA6;
+    border-radius: 10px;
+    bottom: 0;
+  }
+  .buttonAccept:hover {
+    padding: 12px 17px;
+    background-color: #388a5b;
+  }
+
+  .formularioChangePass{
+    width: 100%;
+    height: 65%;
+    position:relative;
+    text-align: left;
+  }
+  .formularioChangePass h2{
+    padding-top: 40px;
+    padding-bottom: 5px;
+    text-align: center;
+    font-size: 1.4em;
+  }
+
+  #posicionBotonCancel{
+    bottom: 20px;
+    right: -10px;
+    position: absolute;
+  }
+  #posicionBotonAccept{
+    bottom: 20px;
+    right: 100px;
+    position: absolute;    
+  }
+  .fuente{
+    font-family: myFirstFont;
+  }
+  .inputs{
+    margin:auto;
+    width: 100%;
+    height: 50%;
+  }
+  .Container{
+    position: relative;
+    text-align: left;
+  }
+  .Container p{
+    display: inline-block;
+  }
+  .Container input{
+    right: 80px;
+    bottom:0;
+    position: absolute;
+    font-family: myFirstFont;
+  }
+  .botonesPeques{
+    padding: 1px 3px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: 4px solid #C7ACA6;
+    border-radius: 10px;
+    position: absolute;
+  }
+  .BotonAcceptar{
+    background-color: #476E58; 
+    bottom: -22%;
+    right: 40%;
+  }
+  .BotonAcceptar:hover{
+    padding: 2px 4px;
+    background-color: #388a5b;    
+  }
+  .BotonCancelar{
+    background-color: #8C3737; 
+    bottom: -22%;
+    right: 33%;
+  }
+  .BotonCancelar:hover{    
+    padding: 2px 4px;
+    background-color: #ad2020;
+  }
+  #inputUsuario{
+    right: 50%;
+    text-align: left;
+  }
+  #inputCorreu{
+    right: 50%;
+    text-align: left;
+  }
+  .formulario{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    opacity: 80%;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .formularioCambiar{
+    position: absolute;
+    width: 25%;
+    height: 25vh;
+    z-index: 30;
+    opacity: 100%;
+    color:white;
+  }
+  .divContenidoFormulario{
+    position: relative;
+    width: 88%;
+    height: 82%;
+    opacity: 200%;
+    z-index: 50;
+    margin:5% 5% 6% 6%;
+  }
+  .alignContent{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    font-family: myFirstFont;
+  }
+  .posicionButtonAcceptConfirmar{
+    bottom: 0;
+    right: 32%;
+    position: absolute;
+  }
+  .posicionButtonCancelConfirmar{
+    bottom: 0;
+    right: 0;
+    position: absolute;
+  }
+  #PasswordFormulario{
+    right: 20%;
+  }
+
+  .divContenidoFormulario .Container{
+    margin-top: 8%;
+  }
+  .divContenidoFormulario p:nth-of-type(2){
+    text-align: center;    
+  }
+  .formularioCambiar button{
+    font-family: myFirstFont;
+  }

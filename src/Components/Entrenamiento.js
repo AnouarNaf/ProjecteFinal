@@ -57,7 +57,7 @@ export default class Entrenamiento extends react.Component {
     render() {
         return (
             <div className="perfil" >
-                <Header />
+                <Header userName={JSON.parse(sessionStorage.getItem("Usuari")).usuari}/>
                 <Menu />
                 <div className="container">
                     <div id="lista" >
@@ -117,7 +117,7 @@ export default class Entrenamiento extends react.Component {
                                     {!this.state.imagenes ? "" : this.state.imagenes.map((x, i) => {
                                         return (
                                             <Col className="celda" sm={4} onClick={() => this.cambiar(x.idMonstre)} key={i}> 
-                                                <img src={x.img} className="imatges" alt="imatgeMonstre"></img>
+                                                <img src={x.img} className="imatges imatges3" alt="imatgeMonstre"></img>
                                             </Col>
                                         )
                                     })}
