@@ -1,13 +1,14 @@
-.LogoutButton{
-    float:right;
+.IconsButtons{
+    right: 1%;
     height: 3.2vh;
     width: auto;
     margin-right: 1vw;
+    position: absolute;
+}
+.LinksHeader:nth-of-type(2) .IconsButtons{
+    right: 6%;
 }
 
-.LinkLog{
-    color:white;
-}
 #title_submenu{
     margin-left: 25%;
     background-color: black;
@@ -25,13 +26,28 @@
     color:white;
     height: 12%;
     overflow: hidden;
+    position: relative;
   }
 
   #usu_header{
-    z-index: 5;
     bottom:0%;
     position: relative;
     font-size: 4vh;
     margin-left: 5%;
     color:white;
+  }
+
+  #texto_header{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 96%;
+    padding-left: 4%;
+  }
+  .LinksHeader{
+      height: 100%;
+      display: flex;
+      align-items: center;
+      color:white;      
   }

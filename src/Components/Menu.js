@@ -9,21 +9,24 @@ import '../Styles/Menu.css';
 export default class Menu extends React.Component {
     render() {
         return (
-            <div id="submenu">
-                <div id="boton_menu">
-                    <b className="boton">
-                        <Link id="links" to="/Perfil"><img src={boton_perfil}/></Link>
-                    </b>
-                    <b className="boton">
-                        <Link id="links" to="/Pvp"><img src={boton_pvp}/></Link>
-                    </b>
-                    <b className="boton">
-                        <Link id="links" to="/Entrenamiento"><img src={boton_ent}/></Link>
-                    </b>
-                    <b className="boton">
-                        <Link id="links" to="/Friends"><img src={boton_amigos}/></Link>
-                    </b>
+            <div className="posicion">
+                <div id="submenu">
+                    <div id="boton_menu">
+                        <b className="boton">
+                            <Link className="LinksHeader" to="/Perfil"><img src={boton_perfil} /></Link>
+                        </b>
+                        <b className="boton">
+                            <Link className="LinksHeader" to="/Pvp"><img src={boton_pvp} /></Link>
+                        </b>
+                        <b className="boton">
+                            <Link className="LinksHeader" to="/Entrenamiento"><img src={boton_ent} /></Link>
+                        </b>
+                        <b className="boton">
+                            <Link className="LinksHeader" to="/Friends"><img src={boton_amigos} /></Link>
+                        </b>
+                    </div>
                 </div>
-            </div>)
+            </div>
+        )
     }
 }

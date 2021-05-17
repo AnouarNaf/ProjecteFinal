@@ -12,9 +12,9 @@ export default class Header extends react.Component {
         return(
             <div className="header">
                 <div id="texto_header">
-                    <Link to="/Pvp"><b id="usu_header">{this.props.userName}</b> </Link>                  
-                    <Link to="/login" className="LinkLog"><AiOutlineLogout className="LogoutButton" onClick={this.Logout}/></Link>
-                    <Link to="/Opcions" className="LinkLog"><AiFillSetting className="LogoutButton"/></Link>
+                    <Link to="/Pvp" className="LinksHeader"><b id="usu_header">{this.props.userName}</b></Link>
+                    <Link to="/Opcions" className="LinksHeader"><AiFillSetting className="IconsButtons"/></Link>
+                    <Link to="/login" className="LinksHeader"><AiOutlineLogout className="IconsButtons" onClick={this.Logout}/></Link>                    
                 </div>
             </div>
         )
