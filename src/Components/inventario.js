@@ -4,8 +4,16 @@ import '../Styles/inventario.css';
 import subirnivel from '../imgs/Perfil/inventario/subirnivel.png';
 import { Container, Row, Col } from 'react-grid-system';
 import { AiFillEdit } from "react-icons/ai";
-
 import { AiOutlineUpload } from "react-icons/ai";
+import {AiFillDelete} from "react-icons/ai";
+import {AiFillCloseCircle} from "react-icons/ai";
+import liga_0 from '../imgs/MEDALLAS/Liga_0.png';
+import liga_1 from '../imgs/MEDALLAS/Liga_1.png';
+import liga_2 from '../imgs/MEDALLAS/Liga_2.png';
+import liga_3 from '../imgs/MEDALLAS/Liga_3.png';
+import liga_4 from '../imgs/MEDALLAS/Liga_4.png';
+import liga_5 from '../imgs/MEDALLAS/Liga_5.png';
+
 var idmonstrx="";
 var puntos_sin_confirmar=0;
 
@@ -22,19 +30,67 @@ class Inventario extends React.Component{
             Esquiva: 0,
             pestaña_nombre: false,
             nuevonombre: "Monstre",
-            value:""
+            value:"",
+            Liga: 0,
+            sacrificar: 0
         }
         this.boton_confirmar = this.boton_confirmar.bind(this);
     }
    
 
-    sleeccion_m(idmonstruo){
+   async sleeccion_m(idmonstruo){
+    this.setState({
+        puntos_sin_confirmar: 0,
+        Fuerza: 0,
+            Vida: 0,
+            Armadura: 0,
+            Esquiva: 0
+    })
         Axios.post("http://localhost:3001/api/GetMonstruo_info", { usuario: JSON.parse(sessionStorage.getItem("Usuari")).usuari, idmonstruo: idmonstruo })
         .then((res)=> this.setState({
             Monstruo: res.data.rows ,
             nivel: Math.trunc(res.data.rows[0].Punts_Gastats / 5)
-         })  )
+         })).then((res)=>this.cargarliga())
+        
+             
     }
+cargarliga(){
+    if( Math.trunc(this.state.Monstruo[0].wins*100/(this.state.Monstruo[0].losses+this.state.Monstruo[0].wins)>90)){      
+        this.setState({
+            Liga: 5
+        })
+    }
+    else if( Math.trunc(this.state.Monstruo[0].wins*100/(this.state.Monstruo[0].losses+this.state.Monstruo[0].wins)>80)){
+            this.setState({
+                Liga: 4
+            })}
+    else if( Math.trunc(this.state.Monstruo[0].wins*100/(this.state.Monstruo[0].losses+this.state.Monstruo[0].wins)>60)){
+                this.setState({
+                    Liga: 3
+                })}
+    else if( Math.trunc(this.state.Monstruo[0].wins*100/(this.state.Monstruo[0].losses+this.state.Monstruo[0].wins)>45)){
+                    this.setState({
+                        Liga: 2
+                    })}
+    else if( Math.trunc(this.state.Monstruo[0].wins*100/(this.state.Monstruo[0].losses+this.state.Monstruo[0].wins)>30)){
+                        this.setState({
+                            Liga: 1
+                        })
+    }else{
+        this.setState({
+             Liga: 0
+             })
+             if(this.state.Monstruo[0].wins==0&&this.state.Monstruo[0].losses==0){
+                
+             }
+                        
+                    }
+                
+            
+
+     
+     console.log(this.state.Liga);
+}
 boton_confirmar(){
     // this.state.Monstruo[0].Punts_Actius = this.state.Monstruo[0].Punts_Actius- this.state.puntos_sin_confirmar;
    
@@ -169,9 +225,40 @@ boton_confirmar(){
     
     handleChange=(e)=>{
         this.setState({value:e.target.value})
-        console.log(this.state.value);
-      }
       
+      }
+      confirmarcontraseña=(e)=>{
+        this.setState({value:e.target.value})
+     
+      }
+     async sacrificar(){
+        const respuesta =  await Axios.post("http://localhost:3001/api/validarUsuario", { usuario: JSON.parse(sessionStorage.getItem("Usuari")).usuari, contraseña: this.state.value })
+        if( respuesta.data.mensaje == "True"){
+           
+           var x = await Axios.post("http://localhost:3001/api/contadormonstres", { usuario: JSON.parse(sessionStorage.getItem("Usuari")).usuari});
+            if(x.data.mensaje=="True"){
+                alert(this.state.Monstruo[0].Nombre_Perso+" ha sido sacrificado")
+                    Axios.post("http://localhost:3001/api/eliminarmonstre", { usuario: JSON.parse(sessionStorage.getItem("Usuari")).usuari, monstruo: this.state.Monstruo[0].idMonstre })
+                    this.setState({sacrificar:0})
+                    window.location.reload(true);
+            }else{
+                alert("No pots eliminar el teu ultim Monstre");
+                this.setState({sacrificar:0})
+            }
+        }else{
+            alert(respuesta.data.mensaje)
+        }
+        this.setState({sacrificar:0})
+      }
+
+      salirsacrifcar(){
+        this.setState({sacrificar:0})
+      }
+
+      ventanaeliminar(){
+        this.setState({sacrificar: 1})
+      }
+
    async  cambiar(){
          
          this.setState({
@@ -185,6 +272,7 @@ boton_confirmar(){
         }))
        
       }
+    
     render(){
         return(
             <div className="container">
@@ -197,10 +285,17 @@ boton_confirmar(){
                     {!this.state.imagenes ? "Cargando" :this.state.imagenes.map((x,i) =>{
                             return(<Col onClick={() => this.sleeccion_m(x.idMonstre)} className="celda" key={i}>
                                 <img width="97px" height="111px" id="imgs_celdas" src={x.img} alt="Monstruos"/>
+                                <AiFillDelete className="AiFillDelete" onClick={() => this.ventanaeliminar()}/>
                                 </Col>)
                     })
                     }   
                     </Row>
+                    {this.state.sacrificar == 1 ?  <div id="ventanaconfirmacion">
+                    <b>Para sacrificar a la criatura Confirma tu Contraseña</b>
+                   <input type="password" value={this.state.value} onChange={this.confirmarcontraseña} />
+                   <AiFillDelete onClick={() => this.sacrificar()}/>
+                   <AiFillCloseCircle onClick={() => this.salirsacrifcar()}/>
+                </div>:null} 
                 </Container>    
             </div>
             {!this.state.Monstruo ?  null: 
@@ -263,58 +358,83 @@ boton_confirmar(){
                                </Row>
                                 </Container>
                                 <Container className="descripcion_stats">
-                                    <Row id="desc">
-                                        Descripcion
-                               </Row>
-                                <Row>
-                                {this.state.Monstruo[0].Descripcio }    
-                               
-                               </Row>
+                             
                                 </Container>
                                 <Container className="Registre_partides">
                                 <Row id="desc">
                                        Partidas Jugadas
                                </Row>
                                 <Row>
-                                 0 
+                                 {this.state.Monstruo[0].wins+this.state.Monstruo[0].losses}
                                </Row>
                                <Row id="desc">
                                        Partidas Ganadas
                                </Row>
                                 <Row>
-                                 0 
+                                {this.state.Monstruo[0].wins}
                                </Row>
                                <Row id="desc">
                                        Partidas Perdidas
                                </Row>
                                 <Row>
-                                 0 
+                                {this.state.Monstruo[0].losses}
                                </Row>
                              {this.state.puntos_sin_confirmar ==  0 ? null :
                               <Row id="ventana_confirmacion">
-                                 {this.state.puntos_sin_confirmar} puntos sin confirmar
+                                 {this.state.puntos_sin_confirmar} puntos sense confirmar
                                     <button onClick={this.boton_confirmar} id="boton_confirmar">Confirmar</button>
                                </Row>
                                  }
-                                </Container>        
+                                 
+                                 
+                                </Container>
+                                <Container className="winrate_box">
+                                  
+                                    <Row>
+                                        
+                                     </Row>
+                                   
+                                </Container>
+                          
                             </div>
                         </Row>
                         <Row>
                             <div id="nivel_puntos">
                                 <Container>
-                                    <Row>
-                                        Nivel:  {this.state.nivel}   
-                                </Row>
-                                    <Row>
-                                        Puntos: {this.state.Monstruo[0].Punts_Actius }   
+                                <Row>
+                                    <Col>
+                                        Nivel:  {this.state.nivel}    
+                                        </Col>
+                                        <Col>
+                                         Puntos: {this.state.Monstruo[0].Punts_Actius }   
+                                         </Col>
+                                    <Col>
+                                        <div id="Cuadro_winrate">
+                                            <Container id="txt_cuadrowin">
+                                                <Row> Liga - Division {this.state.Liga}</Row>
+                                                <Row>Winrate - {(this.state.Monstruo[0].wins+this.state.Monstruo[0].losses) == 0 ? 0:Math.trunc(this.state.Monstruo[0].wins*100/(this.state.Monstruo[0].losses+this.state.Monstruo[0].wins)) } % </Row>
+                                                <Row> 
+                                                    {this.state.Liga ==  0 ? <div><img  className="medalla" src={liga_0}/> {console.log(this.state.Liga)}</div>: null} 
+                                                    {this.state.Liga ==  1 ? <div><img className="medalla" src={liga_1}/> {console.log(this.state.Liga)}</div>: null}
+                                                    {this.state.Liga ==  2 ? <div><img className="medalla" src={liga_2}/> {console.log(this.state.Liga)}</div>: null}
+                                                    {this.state.Liga ==  3 ? <div><img className="medalla" src={liga_3}/> {console.log(this.state.Liga)}</div>: null}
+                                                    {this.state.Liga ==  4 ? <div><img className="medalla" src={liga_4}/> {console.log(this.state.Liga)}</div>: null}
+                                                    {this.state.Liga ==  5 ? <div><img className="medalla" src={liga_5}/> {console.log(this.state.Liga)}</div>: null}
+                                                </Row>
+                                            </Container>
+                                           
+                                        </div>
+                                    </Col>
                                 </Row>
                                 </Container>
 
                             </div>
                         </Row>
                     </Container>
+                   
                 </div>
-              }  
+              } 
+              
         </div>
        
         

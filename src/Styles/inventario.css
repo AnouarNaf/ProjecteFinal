@@ -2,13 +2,13 @@
     position: relative;
     background-color: black;
     left: 100%;
-    bottom: 193%;
+    bottom: 100%;
     text-align: center;
 }
 .descripcion_stats{
     width: 200%;
     background-color: black;
-    height: 100%;
+
     margin-top:10%;
 }
 #nombre_bicho{
@@ -26,17 +26,18 @@
     cursor: pointer;
 }
 #ventana_confirmacion{
-    display:none;
+    bottom:35px;
     position: relative;
     width: 100%;
     height: 100%;
-    background-color: white;
-    color:black;
+    background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 100%);
+    border:white 2px solid;
+    color:white;
     margin-top:50%;
-    background: white;
-    right: 120%;
+    right:60%;
     font-size: 90%;
     text-align: center;
+    z-index: 10;
 }
 #boton_confirmar{
   
@@ -54,4 +55,39 @@
 #boton_nombre{
     position: relative;
     left: 25%;
+}
+#Cuadro_winrate{
+    width: 200%;
+    left: 50%;
+    position: relative;
+    background: radial-gradient(circle, rgba(1,0,51,1) 0%, rgba(0,0,0,1) 100%);
+    border: white 2px solid;
+    z-index: 5;
+    bottom:50%;
+  
+}
+#txt_cuadrowin{
+    width: 100%;
+   left:15%;
+}
+.medalla{
+    position: relative;
+    left:50%;
+    
+}
+.AiFillDelete{
+    position: relative;
+    bottom:90%;
+    left:00%;
+}
+#ventanaconfirmacion{
+    width: 73%;
+    height: 72%;
+    background: radial-gradient(circle, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.8) 100%);
+    border:white 2px solid;
+    background-size: FIXED;
+    background-repeat: no-repeat;
+    position: relative;
+    bottom: 220%;
+    left:15%;
 }
