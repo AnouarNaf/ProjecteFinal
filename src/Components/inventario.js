@@ -234,7 +234,7 @@ boton_confirmar(){
      async sacrificar(){
         const respuesta =  await Axios.post("http://localhost:3001/api/validarUsuario", { usuario: JSON.parse(sessionStorage.getItem("Usuari")).usuari, contraseña: this.state.value })
         if( respuesta.data.mensaje == "True"){
-            alert("si");
+           
            var x = await Axios.post("http://localhost:3001/api/contadormonstres", { usuario: JSON.parse(sessionStorage.getItem("Usuari")).usuari});
             if(x.data.mensaje=="True"){
                 alert(this.state.Monstruo[0].Nombre_Perso+" ha sido sacrificado")
