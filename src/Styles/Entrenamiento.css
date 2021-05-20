@@ -50,26 +50,33 @@
     top: 80px;
     position: relative;
     left: 20px;
-    animation-name: example2;
-    animation-duration: 1s;
+
 }
 #monstresPlayer2 {
     top: 80px;
     position: absolute;
     right: 20px;
-    animation-name: example;
-    animation-duration: 1s;
+
 }
 #imatge2 {
     transform: scaleX(-1);
 }
+.monstre{
+    animation-name: example2;
+    animation-duration: 1s;
+}
+.monstreBot{
+    animation-name: example;
+    animation-duration: 1s;
+    animation-delay: 1s;
+}
 @keyframes example {
     0%   {right:20px; top:80px;}
-    50%  {right:200px; top:80px;}
+    50%  {right:400px; top:80px;}
     100% {right:20px; top:80px;}
 }
 @keyframes example2 {
     0%   {left:20px; top:80px;}
-    50%  {left:200px; top:80px;}
+    50%  {left:400px; top:80px;}
     100% {left:20px; top:80px;}
-  }
+}
