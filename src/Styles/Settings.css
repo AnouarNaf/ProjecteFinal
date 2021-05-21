@@ -88,10 +88,10 @@
     text-align: left;
   }
   .formularioChangePass h2{
-    padding-top: 40px;
+    padding-top: 7%;
     padding-bottom: 5px;
     text-align: center;
-    font-size: 1.4em;
+    font-size: 4.5vh;
   }
 
   #posicionBotonCancel{
