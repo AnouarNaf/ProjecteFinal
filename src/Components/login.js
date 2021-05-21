@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import '../Styles/login.css';
 import Axios from "axios";
 
@@ -10,6 +10,9 @@ import cadenas2 from '../imgs/Login/cadena_2.png';
 import boton from '../imgs/Login/boton.png';
 import titulo from '../imgs/Login/titulo.png';
 import useKeypress from 'react-use-keypress';
+import {v4 as uuidv4} from 'uuid';
+
+let myuuid = uuidv4();
 
 
 function Login() {
@@ -25,9 +28,10 @@ function Login() {
 
     const login = () => {
         // console.log("CLICK");
-        Axios.post("http://localhost:3001/api/validarUsuario", { usuario: usu, contraseña: cont }).then((res) => RespuestaLogin(res.data.mensaje, usu))
+        Axios.post("http://localhost:3001/api/validarUsuario", { usuario: usu, contraseña: cont, session: myuuid}).then((res) => RespuestaLogin(res.data.mensaje, usu))        
         /*.then((res) => setDataC(res.data.mensaje)).then((res)=> alerta(res.data.mensaje))*/
     }
+
     const register = () => {
 
         const user_without_spaces = reg_usuario.replace(/\s/g, '');
@@ -50,7 +54,7 @@ function Login() {
 
     function registro(x, user, password, email) {
         if (x === "false") {
-            Axios.post("http://localhost:3001/api/InsertarUsuario", { usuario: user, contraseña: password, gmail: email }).then((res) => alert(res.data.mensaje));
+            Axios.post("http://localhost:3001/api/InsertarUsuario", { usuario: user, contraseña: password, gmail: email}).then((res) => alert(res.data.mensaje));            
         } else {
             alert("L'usuari ja existeix");
         }
@@ -60,7 +64,8 @@ function Login() {
         if (res === "True") {
             sessionStorage.setItem("Usuari", JSON.stringify({
                 usuari,
-                logged: true
+                logged: true,
+                sessionid: myuuid
             }));
             history.push("/perfil");
         }

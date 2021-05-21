@@ -33,7 +33,7 @@ export default class Settings extends react.Component {
     }
     usuario = JSON.parse(sessionStorage.getItem("Usuari")).usuari
     async componentDidMount() {
-        const res = await Axios.get(`http://localhost:3001/api/GetSettingsUsuari/${this.usuario}`);        
+        const res = await Axios.get(`http://localhost:3001/api/GetSettingsUsuari/${this.usuario}`);
         this.setState({ usuari: res.data[0].Usuari, correu: res.data[0].correu, data: res.data, stat: true, correuActual:res.data[0].correu});
     }
 

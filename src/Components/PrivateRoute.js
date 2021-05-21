@@ -3,15 +3,32 @@
 
 // If they are: they proceed to the page
 // If not: they are redirected to the login page.
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { Redirect, Route } from 'react-router-dom'
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+async function Prueba(){
+  const [estado, setEstado] = useState(null);
+  var res = await axios.get(`http://localhost:3001/connectionStatus/${JSON.parse(sessionStorage.getItem("Usuari")).usuari}/${JSON.parse(sessionStorage.getItem("Usuari")).sessionid}`);
+  setEstado(res.data);
+  return estado;
+}
 
+const PrivateRoute = ({ component: Component, ...rest }) => {
   // Add your own authentication on the below line.
-  var isLoggedIn = false;
-  if(sessionStorage.getItem("Usuari") != null){
-    isLoggedIn = JSON.parse(sessionStorage.getItem("Usuari")).logged;
+  // var estado = false;
+  // useEffect(() => {
+  //   axios.get(`http://localhost:3001/connectionStatus/${JSON.parse(sessionStorage.getItem("Usuari")).usuari}/${JSON.parse(sessionStorage.getItem("Usuari")).sessionid}`).then((res) => estado = res.data);
+  //   console.log("dentro " + estado)
+  //     }, []);
+
+  var isLoggedIn = false;  
+  // console.log(estado)
+  var estado
+  Prueba().then((res) => estado = res);
+  console.log(estado);
+  if(estado){
+    isLoggedIn = true;
   }
   else{
     isLoggedIn = false;
