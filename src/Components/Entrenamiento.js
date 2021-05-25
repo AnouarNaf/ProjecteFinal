@@ -192,12 +192,13 @@ export default class Entrenamiento extends react.Component {
                 })
                             await new Promise(resolve => setTimeout(resolve, 200));
                             this.setState({
-                            monstrebot: 'invertir-color',
+                            monstreBot: 'invertir-color',
                            
                         })
+                        console.log(this.state.monstreBot);
                         await new Promise(resolve => setTimeout(resolve, 200));
                             this.setState({
-                            monstrebot: '',
+                            monstreBot: '',
                             critico:"",
                             bloqeuado:"",
                             esquivado:""
@@ -217,8 +218,7 @@ export default class Entrenamiento extends react.Component {
                 })
                await new Promise(resolve => setTimeout(resolve, 200));
                  this.setState({
-                    monstre: 'invertir-color',
-                   
+                    monstre: 'invertir-color',                 
                 })
                 await new Promise(resolve => setTimeout(resolve, 200));
                  this.setState({
