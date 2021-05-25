@@ -5,9 +5,10 @@ import '../Styles/Entrenamiento.css';
 import Axios from "axios";
 import Menu from './Menu';
 import Header from './Header';
+import axios from 'axios';
 
 export default class Entrenamiento extends react.Component {
-    constructor(props) {
+    constructor(props) {        
         super(props);
         this.state = {
             actiu: false,
@@ -20,7 +21,15 @@ export default class Entrenamiento extends react.Component {
     async componentDidMount() {
         Axios.post("http://localhost:3001/api/GetImgMonstruos", { usuario: JSON.parse(sessionStorage.getItem("Usuari")).usuari }).then((res) => this.setState({
             imagenes: res.data.rows
-        }))
+        }))        
+    }
+    componentWillUnmount(){
+        axios.get(`http://localhost:3001/connectionStatus/${JSON.parse(sessionStorage.getItem("Usuari")).usuari}/${JSON.parse(sessionStorage.getItem("Usuari")).sessionid}`).then((res) => {
+            if(!res.data){
+                sessionStorage.clear();
+            }
+        });
+        console.log("Hecho en Ent");
     }
 
     cambiar(idmonstruo) {

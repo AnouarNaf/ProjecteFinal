@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../Styles/profile.css';
 import Inventario from './inventario';
 import Menu from './Menu';
 import Header from './Header';
+import axios from 'axios';
+import { useHistory } from "react-router-dom";
 
 function Perfil() {
+    const history = useHistory();
 
+    useEffect(() => {
+        axios.get(`http://localhost:3001/connectionStatus/${JSON.parse(sessionStorage.getItem("Usuari")).usuari}/${JSON.parse(sessionStorage.getItem("Usuari")).sessionid}`).then((res) => {
+            if(!res.data){
+                sessionStorage.clear();
+                history.push("/perfil");
+            }
+        });
+        console.log("Hecho en Perfil");
+    }, []);
 
     //----------------------------------------//
 

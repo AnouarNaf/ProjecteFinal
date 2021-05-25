@@ -7,12 +7,12 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Redirect, Route } from 'react-router-dom'
 
-async function Prueba(){
-  const [estado, setEstado] = useState(null);
-  var res = await axios.get(`http://localhost:3001/connectionStatus/${JSON.parse(sessionStorage.getItem("Usuari")).usuari}/${JSON.parse(sessionStorage.getItem("Usuari")).sessionid}`);
-  setEstado(res.data);
-  return estado;
-}
+// async function Prueba(){
+//   const [estado, setEstado] = useState(null);
+//   var res = await axios.get(`http://localhost:3001/connectionStatus/${JSON.parse(sessionStorage.getItem("Usuari")).usuari}/${JSON.parse(sessionStorage.getItem("Usuari")).sessionid}`);
+//   setEstado(res.data);
+//   return estado;
+// }
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   // Add your own authentication on the below line.
@@ -22,13 +22,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   //   console.log("dentro " + estado)
   //     }, []);
 
-  var isLoggedIn = false;  
-  // console.log(estado)
-  var estado
-  Prueba().then((res) => estado = res);
-  console.log(estado);
-  if(estado){
-    isLoggedIn = true;
+  var isLoggedIn = false;
+  if(sessionStorage.getItem("Usuari") != null){
+    isLoggedIn = JSON.parse(sessionStorage.getItem("Usuari")).logged;
   }
   else{
     isLoggedIn = false;
