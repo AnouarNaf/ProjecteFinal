@@ -9,9 +9,9 @@ export default class Settings extends react.Component {
     constructor(props) {
         super(props)
         this.state = {
-            password: null,
-            newPass: null,
-            passR: null,
+            password: "",
+            newPass: "",
+            passR: "",
             usuari: "",
             correu: "",
             estadoBotonesUsuario: false,
@@ -224,15 +224,15 @@ export default class Settings extends react.Component {
                                         <div className="inputs">
                                             <div className="Container">
                                                 <p>Contrasenya Actual</p>
-                                                <input type="password" value={this.state.password} onChange={(e) => { this.setState({ password: e.target.value }); }}></input>
+                                                <input className="inputsChangeCont" type="password" value={this.state.password} onChange={(e) => { this.setState({ password: e.target.value }); }}></input>
                                             </div>
                                             <div className="Container">
                                                 <p>Contrasenya Nova</p>
-                                                <input type="password" value={this.state.newPass} onChange={(e) => { this.setState({ newPass: e.target.value }); }}></input>
+                                                <input className="inputsChangeCont" type="password" value={this.state.newPass} onChange={(e) => { this.setState({ newPass: e.target.value }); }}></input>
                                             </div>
                                             <div className="Container">
                                                 <p>Repeteix Contrasenya Nova</p>
-                                                <input type="password" value={this.state.passR} onChange={(e) => { this.setState({ passR: e.target.value }); }}></input>
+                                                <input className="inputsChangeCont" type="password" value={this.state.passR} onChange={(e) => { this.setState({ passR: e.target.value }); }}></input>
                                             </div>
                                         </div>
                                         <div id="posicionBotonAccept">
