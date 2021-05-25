@@ -2,22 +2,23 @@
     left: 10%;
     text-align: center;
     border: black 5px solid;
-    background: rgb(198,198,198,0.5); ;
+   background-image: url("../imgs/arena/arena.png");
     position:relative;
     width: 80%;
     height: 30%;
     color: white;
     font-style: normal;
+        background-size: cover;
 }
-#estadistiques{
+#estadistiques2{
     text-align: center;
     left: 10%;
-    margin-top: 10%;
+    margin-top: 2%;
     border: white 5px solid;
     background: rgb(0,0,0,0.8); ;
     position:relative;
     width: 80%;
-    height: 30%;
+    height: 20%;
     color: white;
     font-style: normal;
 }
@@ -39,23 +40,25 @@
     
 }
 .imatges {
-    width: 150px;
-    height: 150px;
+    width: 85px;
+    height: 95px;
+    margin-left:0%;
+    margin-right:50%;
 }
 .imatges3:hover {
     opacity: 30%;
     cursor: pointer;
 }
 #monstresPlayer1 {
-    top: 80px;
+    top: 75px;
     position: relative;
-    left: 20px;
+    left: 40px;
 
 }
 #monstresPlayer2 {
-    top: 80px;
+    top: 95px;
     position: absolute;
-    right: 20px;
+    right: 40px;
 
 }
 #imatge2 {
@@ -68,7 +71,7 @@
 .monstreBot{
     animation-name: example;
     animation-duration: 1s;
-    animation-delay: 1s;
+    animation-delay: 0.1s;
 }
 @keyframes example {
     0%   {right:20px; top:80px;}
@@ -79,4 +82,122 @@
     0%   {left:20px; top:80px;}
     50%  {left:400px; top:80px;}
     100% {left:20px; top:80px;}
+}
+#pbar{
+    z-index: 10;
+}
+body{
+    background-color: black;
+}
+progress {
+    -webkit-appearance: none;
+  }
+  
+  ::-webkit-progress-bar {
+     background-color: orange;
+  }
+  #celda{
+      font-size: 80%;
+      right:15%;
+      position: relative;
+  }
+  #text_ent_nom{
+      margin-top: 2%;
+      margin-left: 0%;
+      text-align: center;
+  }
+  #cont_ent{
+      width: 50% !important;
+  }
+  #row_ent{
+      width: 100%;
+  }
+  #stats{
+      background-color: black;
+      border:white 2px solid;
+      width: 50%;
+      height: 80%;
+      margin-top: 23%;
+      margin-left: 25%;
+      position: relative;
+  }
+  #daño{
+      color:red;
+
+  }
+  #vida{
+      color:green;
+  }
+  #armadura{
+      color:Gray;
+  }
+  #esquiva{
+      color:white;
+  }
+  #nombre{
+      font-size: 10%;
+  }
+  #boton_j{
+      width: 30%;
+      margin-left: 60%;
+      bottom: 100px ;
+      position: relative;
+  }
+  
+#txt_sta{
+    left: 30%;
+    bottom:5%;
+    position: relative;
+
+  }
+  #separador{
+      left: 25%;
+      position: relative;
+  }
+  #pantalla_registro{
+      background-color: black;
+      border: 2px white solid;
+      width:50%;
+      height: 20%;
+      margin-left: 25%;
+      color:white;
+  }
+.regtxt{
+    display: block;
+    width: 100%;
+}
+#registro_texto{
+    width:80%;
+    height: 150px;
+    background-color: blue;
+    overflow-y: scroll;
+    margin-left:10%;
+    margin-top: 5%;
+}
+#Capsula_fin_Partida{
+    background-color: black;
+    color: white;
+    border: 2px white solid;
+    width:40%;
+    height: 10%;
+    position: relative;
+    margin-left: 30%;
+    bottom: 52%;
+}
+#barra_bot{
+    position: relative;
+    bottom: 95px;
+    left: 30%;
+}
+#barra_jugador{
+    position: relative;
+    top: 17px;
+    right: 30%;
+}
+.invertir-color {
+    -webkit-filter: invert(100%);
+   filter: invert(100%);
+}
+#narrador{
+    margin-top:20%;
 }
